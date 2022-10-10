@@ -116,7 +116,6 @@ $config = [
                                             <select name="tipo" class="form-control tipo_post">
                                                 <option value=""> Selecione </option>
                                                 <option value="artigo" {{ (old('artigo') == '1' ? 'selected' : '') }}>Artigo</option>
-                                                <option value="noticia" {{ (old('noticia') == '0' ? 'selected' : '') }}>Notícia</option>
                                                 <option value="pagina" {{ (old('pagina') == '0' ? 'selected' : '') }}>Página</option>
                                             </select>
                                         </div>
