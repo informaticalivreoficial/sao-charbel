@@ -1,64 +1,129 @@
-/*AJAX*/
-.load{
+.h2sombra{
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+.center{
     text-align: center;
-    color: #ccc;
-    font-size: 15px;
-    letter-spacing: 0.3px;
-    line-height: 27px;
 }
-.mensagem{
+.navbar-brand{
+    padding-top: 8px !important;
+}
+.fa-spin{
+    color: #B2B2B2;
+    font-size: 30px;
+}
+.whatsapp-footer{
+    width: 64px;
+    display: block;
+    position: fixed;
+    bottom: 40px;
+    left: 20px;
     text-align: center;
-    border-radius: 4px;
-    line-height: 20px;
-    padding:5px 10px 5px 10px;
+    padding-top: 10px;
+    z-index: 999;
 }
-.erro{
-    color:#ac1818; 
-    border-color:#ffc9c9; 
-    background-color:#ffc9c9; 
-    
+.balao{
+    display:none;
+    padding: 8px;
+    bottom: 130px;
+    left: 10px;
+    position: fixed;
+    background: #fff;
+	border-radius: 15px;
+	width: 200px;
+	height: 130px;
+    z-index: 999;
+    box-shadow: 2px 2px 4px #000000;
 }
-.accept{
-    color:#045702; 
-    background-color:#bdedbc; 
-    border-color:#bdedbc; 
+.balao:after{
+	content: "";
+	width: 0;
+	height: 0;
+	position: absolute;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #fff;	
+	bottom: -20px;
+	left: 20%;
 }
-.lipaginas{
-  list-style: none;display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px;  
-}
-
-.fb_iframe_widget span {
+.balao textarea{
     width: 100%;
+    height: 85px;
+    resize: none;
+    border: none;
 }
-
-/* CSS do VIDEO*/
-#video{
-    position: relative;
-    padding-bottom: 56.25%; 
-    padding-top: 25px;
-    height: 0;
-    margin:0 auto;
+.balao button{
+    box-shadow: none;
+    border-radius: 5px;
+    float: right;
 }
-#video iframe{
-    position: absolute;
-    top: 0;
-    left: 0;
+.alertw{
+    left: 13px;
+    bottom: 250px;
+    display: block;
+    position: fixed;
+    z-index: 999;
+}
+.selectReservas{
+    border: 2px solid #333333;
+    border-radius: 0px;
+    height: 42px;
+    line-height: 37px;
+    margin-bottom: 15px;
+    display: block;
     width: 100%;
-    height: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555555;
+    background-color: #fff;
 }
-
-@media only screen and (max-width: 960px) {
-    .offer-box img{
-        height: auto !important;
-    }
-  }
-@media only screen and (min-width: 960px) {
-    .imful{
-        min-height:300px;
-    }
-    .imful1{
-        min-height:296px;
-    }
-  }
+.btncheckout{
+    width: 100%;
+    height: 42px;
+    font-size: 16px;
+    color: #ffffff;
+    background: #8E7037;
+    line-height: 40px;
+    border:none;
+    font-weight: 600;
+}
+.btncheckout:hover{
+    border: 2px solid #8E7037;
+    background: transparent;
+    color: #8E7037;
+}
+.selectindex{
+    font-size: 55px;
+    background-color: #fff;
+    border: none;
+}
+.btnindex{
+    text-align: center !important;
+    font-weight: 600;
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-top: 45px;
+    color: white;
+    cursor: pointer;
+    background:none;
+    border: none;
+}
+.a404{
+    color:#3366FF;
+}
+.principal{
+    width: 95%;
+}
+.principal > div {
+    width:33%;
+    position:relative;
+    float:left;    
+}
+.itr img{
+    width: auto !important;
+    height: auto !important; 
+}
+.temp{
+    font-size: 1.1em;
+}
