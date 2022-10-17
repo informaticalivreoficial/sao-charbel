@@ -5,23 +5,49 @@
 <section class="section-slider height-v">
 
     <!-- Slider Section -->
-    @if (!empty($slides) && $slides->count() > 0)
+    
     <div id="index12" class="owl-carousel  owl-theme">        
             
-        @foreach ($slides as $key => $slide)  
-            <div class="item{{($key == 0 ? ' active' : '')}}">
-                @if ($slide->link != null)                        
-                    <a href="{{$slide->link}}" {{($slide->target == 1 ? 'target="_blank"' : '')}}>
-                        <img src="{{$slide->getimagem()}}" alt="{{$slide->titulo}}" />  
-                    </a> 
-                @else
-                    <img src="{{$slide->getimagem()}}" alt="{{$slide->titulo}}" />
-                @endif                         
+        <div class="item itr">
+            <img alt="Previsão do tempo" src="{{url('frontend/assets/images/tempo.png')}}" class="img-responsive">
+            <div class="container">
+                <div class="carousel-caption ">
+                    <h1 class="v2">Previsão para '.$forecast->name.' Hoje</h1>                 
+                    <div class="principal">
+                        <div class="temp">Manhã <br /> 
+                            <img src="'.PATCH.'/include/climatempo/images/'.$day->morningIcon.'.png" /><br />
+                            <b class="temp-min">'.$day->minMorningTemp.' °C</b> -
+                            <b class="temp-max">'.$day->maxMorningTemp.' °C</b><br /> 
+                        </div>
+                        <div class="temp">Tarde <br /> 
+                            <img src="'.PATCH.'/include/climatempo/images/'.$day->afternoonIcon.'.png" /><br />
+                            <b class="temp-min">'.$day->minAfternoonTemp.' °C</b> -
+                            <b class="temp-max">'.$day->maxAfternoonTemp.' °C</b><br /> 
+                        </div>
+                        <div class="temp">Noite <br /> 
+                            <img src="'.PATCH.'/include/climatempo/images/'.$day->nightIcon.'.png" /><br />
+                            <b class="temp-min">'.$day->minNightTemp.' °C</b> -
+                            <b class="temp-max">'.$day->maxNightTemp.' °C</b><br /> 
+                        </div>
+                    </div>                      
+                </div>
             </div>
-        @endforeach             
-           
+        </div>
+        @if (!empty($slides) && $slides->count() > 0)
+            @foreach ($slides as $key => $slide)  
+                <div class="item{{($key == 0 ? ' active' : '')}}">
+                    @if ($slide->link != null)                        
+                        <a href="{{$slide->link}}" {{($slide->target == 1 ? 'target="_blank"' : '')}}>
+                            <img src="{{$slide->getimagem()}}" alt="{{$slide->titulo}}" />  
+                        </a> 
+                    @else
+                        <img src="{{$slide->getimagem()}}" alt="{{$slide->titulo}}" />
+                    @endif                         
+                </div>
+            @endforeach             
+        @endif   
     </div>
-    @endif
+    
     <!-- Slider Section /- -->
             
         
@@ -83,6 +109,96 @@
     </section>
     <!-- END / SLIDER -->
 
+    @if (!empty($apartamentos) && $apartamentos->count() > 0)
+        <section class="rooms">
+            <div class="container">
+                <h2 class="title-room">Apartamentos</h2>
+                <div class="outline"></div>
+                <p class="rooms-p">&nbsp;</p>
+                <div class="wrap-rooms">
+                    <div class="row">
+                        <div id="rooms" class="owl-carousel owl-theme">                        
+                            <div class="item">
+                                @foreach($apartamentos as $apartamento)
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                        <div class="wrap-box" style="min-height: 400px;">
+                                            <div class="box-img">
+                                                <img style="max-height: 255px !important;" src="{{$apartamento->cover()}}" class="img-responsive" alt="{{$apartamento->titulo}}" title="{{$apartamento->titulo}}">       
+                                            </div>
+                                            <div class="rooms-content">
+                                                <h4 class="">{{$apartamento->titulo}}</h4>
+                                                <p class="price">
+                                                    <a href="{{route('web.acomodacao', ['slug' => $apartamento->slug])}}">+ Detalhes</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    
+	@if($configuracoes->descricao && $configuracoes->metaimg != null)    
+        <section class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                        <div class="about-centent">
+                            <h2 class="about-title">{{$configuracoes->nomedosite}}</h2>
+                            <div class="line"></div>
+                            <p class="about-p">{{$configuracoes->descricao}}</p>                    
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7 ">
+                        <div class="about-img">
+                            <div class="img-1">
+                                <img src="{{$configuracoes->getmetaimg()}}" class="img-responsive" alt="{{$configuracoes->nomedosite}}"/>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>    
+    @endif
+
+    @if (!empty($artigos) && $artigos->count() > 0)
+        <section class="events">
+            <div class="container">
+                <h2 class="events-title">Blog</h2>
+                <div class="line"></div>
+                <div id="events-v2" class="owl-carousel owl-theme">
+                    @foreach($artigos as $artigo)
+                        <div class="item ">
+                            <div class="events-item">
+                                <div class="events-img">
+                                    <img src="{{$artigo->cover()}}" class="img-responsive" alt="{{$artigo->titulo}}">
+                                </div>
+                                <div class="events-content">
+                                    <a href="{{route('web.blog.artigo', ['slug' => $artigo->slug])}}" title="{{$artigo->titulo}}">
+                                        <h3 class="sky-h3">{{$artigo->titulo}}</h3>
+                                        <p class="sky-p">Leia +</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <section class="gallery-our" style="padding-top: 80px;">
+        <div class="container-fluid">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1spt-BR!2sbr!4v1488893723237!6m8!1m7!1sF%3A-hNOO3QBnDs4%2FWJtai4KscMI%2FAAAAAAAAEJs%2FB_Qh4lC_tTAGJL50IBdEP-e3tWMjIMveQCLIB!2m2!1d-23.43332223874241!2d-45.07221445441246!3f150.19085246815183!4f-0.20905841325189556!5f0.7820865974627469" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0;width: 80%;" height="450" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+
 @endsection
 
 @section('css')
@@ -92,7 +208,3 @@
 @section('js')
   
 @endsection
-    
-     
-    
-    
