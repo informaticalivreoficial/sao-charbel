@@ -49,23 +49,15 @@ class WebController extends Controller
     public function home()
     {
         $acomodacoes = Apartamento::available()->get();
-        $apartamento = Apartamento::available()
+        $apartamentos = Apartamento::available()
                     ->where('exibir_home', 1)
                     ->inRandomOrder()
-                    ->limit(1)
+                    ->limit(6)
                     ->get();
-        $paginas = Post::orderBy('created_at', 'DESC')->where('tipo', 'pagina')
-                    ->where('menu', 1)
+        $artigos = Post::orderBy('created_at', 'DESC')->where('tipo', 'artigo')
                     ->postson()
-                    ->limit(2)
-                    ->inRandomOrder()
+                    ->limit(6)
                     ->get();
-        $paginasFull = Post::orderBy('created_at', 'DESC')->where('tipo', 'pagina')
-                    ->where('menu', 1)
-                    ->postson()
-                    ->skip(2)->limit(1)->inRandomOrder()
-                    ->get();
-
         $slides = Slide::orderBy('created_at', 'DESC')
                     ->available()
                     ->where('expira', '>=', Carbon::now())
@@ -80,9 +72,8 @@ class WebController extends Controller
 		return view('web.'.$this->configService->getConfig()->template.'.home',[
             'head' => $head,            
             'slides' => $slides,
-            'apartamento' => $apartamento,
-            'paginasFull' => $paginasFull,
-            'paginas' => $paginas,
+            'apartamentos' => $apartamentos,
+            'artigos' => $artigos,
             'acomodacoes' => $acomodacoes
 		]);
     }

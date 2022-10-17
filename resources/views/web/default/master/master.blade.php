@@ -151,6 +151,171 @@
     <!-- INÍCIO DO CONTEÚDO DO SITE -->
     @yield('content')
     <!-- FIM DO CONTEÚDO DO SITE --> 
+
+    <form class="btn-wats" action="" method="post" target="_blank">
+        <div class="balao">
+            <textarea placeholder="Digite Aqui" name="texto"></textarea>
+            <button name="sendwhats" type="submit">Enviar</button>
+        </div>
+    </form>
+        
+    <div class="whatsapp-footer j_btnwhats">
+        <a href="#">
+            <img src="{{url('frontend/assets/images/zap-topo.png')}}" alt="WhatsApp" />
+        </a>
+    </div>
+        <!-- Footer -->
+        
+    <!--FOOTER-->
+    <footer class="footer-sky">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    @if (!empty($newsletterForm))
+                        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+                            <div class="icon-email">                            
+                                <img src="{{url('frontend/assets/images/footer-top-icon-l.png')}}" alt="Email" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                            <div class="textbox">
+                                <form class="form-inline j_submitnewsletter" action="" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <div id="js-newsletter-result"></div>
+                                        <div class="form_hide">
+                                            <div class="input-group">   
+                                                <!-- HONEYPOT -->
+                                                <input type="hidden" class="noclear" name="bairro" value="" />
+                                                <input type="text" class="noclear" style="display: none;" name="cidade" value="" />
+                                                <input type="hidden" class="noclear" name="status" value="1" />
+                                                <input type="hidden" class="noclear" name="nome" value="#Cadastrado pelo Site" />                                 
+                                                <input type="email" class="form-control" placeholder="Cadastre seu E-mail" name="email"/>
+                                                <button class="btn btn-secondary" id="js-subscribe-btn"><i class="ion-android-send"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+                        <div class="icon-email">                            
+                            <img src="{{url('frontend/assets/images/footer-top-icon-lI.png')}}" alt="Email" class="img-responsive">                            
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                        <div class="textbox">
+                            <form class="form-inline j_formsubmitnews" action="" method="post">
+                                <div class="form-group">
+                                <div class="alertas"></div>
+                                <div class="form_hide">
+                                    <div class="input-group">
+                                        <input class="noclear" type="hidden" name="action" value="whatsapp" />
+                                        <input type="text" style="width: 43%;border-right: 1px;border-right-color: #FFFFFF !important;" class="form-control" placeholder="Nome" name="nome"/>
+                                        <input type="text" class="form-control" style="width: 40%;" id="zapzap" placeholder="WhatsApp" name="numero"/>
+                                        <button class="btn btn-secondary"><i class="ion-android-send"></i></button>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    {{--    @if ($configuracoes->facebook)
+                            <a target="_blank" href="{{$configuracoes->facebook}}" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        @endif
+                        @if ($configuracoes->twitter)
+                            <a target="_blank" href="{{$configuracoes->twitter}}" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        @endif
+                        @if ($configuracoes->instagram)
+                            <a target="_blank" href="{{$configuracoes->instagram}}" title="Instagram"><i class="fa fa-instagram"></i></a>
+                        @endif
+                        @if ($configuracoes->linkedin)
+                            <a target="_blank" href="{{$configuracoes->linkedin}}" title="linkedin"><i class="fa fa-linkedin"></i></a>
+                        @endif
+                        @if ($configuracoes->youtube)
+                            <a target="_blank" href="{{$configuracoes->youtube}}" title="Youtube"><i class="fa fa-youtube-play"></i></a>
+                        @endif     --}}                       
+                    </div>
+                </div>
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /footer-top -->
+        <div class="footer-mid">
+            <div class="container">
+                <div class="row padding-footer-mid">                
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                        <div class="footer-logo text-center list-content">
+                            <a href="{{route('web.home')}}" title="Skyline">
+                                <img src="{{url('frontend/assets/images/logomarca-footer.png')}}" alt="{{$configuracoes->nomedosite}}"/>
+                            </a>
+                        </div>
+                    </div>                    
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="list-content">                    
+                            <ul>                            
+                            <li><a href="/pagina/galerias" title="Contact">Galerias</a></li>
+                            <li><a href="/pagina/reservar" title="Contact">Pré-Reserva</a></li>  
+                            <li><a href="/pagina/atendimento" title="Contact">Atendimento</a></li>                          
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-5">
+                        <div class="list-content" style="color: #fff;line-height:30px;text-align: left;">                            
+                            
+                            @if($configuracoes->email)
+                                <i class="fa fa-envelope"></i> {{$configuracoes->email}}
+                            @endif 
+                            @if($configuracoes->rua)	
+                                <br /><i class="fa fa-map-marker"></i> {{$configuracoes->rua}}
+                            @if($configuracoes->num)
+                                , {{$configuracoes->num}}
+                            @endif
+                            @if($configuracoes->bairro)
+                                , {{$configuracoes->bairro}}
+                            @endif
+                            @if($configuracoes->cidade)  
+                                - {{\App\Helpers\Cidade::getCidadeNome($configuracoes->cidade, 'cidades')}}
+                            @endif
+                        @endif
+                        @if($configuracoes->telefone1)
+                            <br /><i class="fa fa-phone"></i> {{$configuracoes->telefone1}}
+                        @endif
+                        @if($configuracoes->telefone2)
+                            <br /><i class="fa fa-phone"></i> {{$configuracoes->telefone2}}
+                        @endif
+                        @if($configuracoes->telefone3)
+                            <br /><i class="fa fa-phone"></i> {{$configuracoes->telefone3}}
+                        @endif
+                        @if($configuracoes->skype)
+                            <br /><img src="{{url('frontend/assets/images/skype.png')}}" alt="Skype" width="16" height="16" /> {{$configuracoes->skype}}
+                        @endif
+                        @if($configuracoes->whatsapp)
+                            <br /><img src="{{url('frontend/assets/images/zapzap.png')}}" alt="WhatsApp" width="16" height="16" /> {{$configuracoes->whatsapp}}
+                        @endif                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="footer-bottom">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding">
+                        © {{$configuracoes->ano_de_inicio}} - {{date('Y')}} {{$configuracoes->nomedosite}} - Todos os direitos reservados.
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding">
+                        <p class="font-accent text-right">
+                            <span class="small text-silver-dark">Feito com <i style="color:red;" class="fa fa-heart"></i> por <a style="color:#fff;" target="_blank" href="{{env('DESENVOLVEDOR_URL')}}">{{env('DESENVOLVEDOR')}}</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END / FOOTER-->
+    
+    <!--SCOLL TOP-->
+    <a href="#" title="sroll" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
+    <!--END / SROLL TOP-->
      
     <!-- LOAD JQUERY -->
     <script src="{{url('frontend/assets/js/jquery-1.12.4.min.js')}}"></script>
@@ -175,6 +340,45 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            // Seletor, Evento/efeitos, CallBack, Ação
+            $('.j_submitnewsletter').submit(function (){
+                var form = $(this);
+                var dataString = $(form).serialize();
+    
+                $.ajax({
+                    url: "{{ route('web.sendNewsletter') }}",
+                    data: dataString,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    beforeSend: function(){
+                        form.find("#js-subscribe-btn").attr("disabled", true);
+                        form.find('#js-subscribe-btn').val("Carregando...");                
+                        form.find('.alert').fadeOut(500, function(){
+                            $(this).remove();
+                        });
+                    },
+                    success: function(response){
+                            $('html, body').animate({scrollTop:$('#js-newsletter-result').offset().top-70}, 'slow');
+                        if(response.error){
+                            form.find('#js-newsletter-result').html('<div class="alert alert-danger error-msg">'+ response.error +'</div>');
+                            form.find('.error-msg').fadeIn();                    
+                        }else{
+                            form.find('#js-newsletter-result').html('<div class="alert alert-success error-msg">'+ response.sucess +'</div>');
+                            form.find('.error-msg').fadeIn();                    
+                            form.find('input[class!="noclear"]').val('');
+                            form.find('.form_hide').fadeOut(500);
+                        }
+                    },
+                    complete: function(response){
+                        form.find("#js-subscribe-btn").attr("disabled", false);
+                        form.find('#js-subscribe-btn').val("Cadastrar");                                
+                    }
+    
+                });
+    
+                return false;
             });
     
         });
