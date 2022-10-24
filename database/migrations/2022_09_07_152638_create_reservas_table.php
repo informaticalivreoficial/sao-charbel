@@ -17,6 +17,7 @@ class CreateReservasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('apartamento');
             $table->unsignedInteger('cliente');
+            $table->unsignedInteger('empresa')->nullable();
             $table->integer('status')->default('0');
             $table->integer('adultos')->default('0');
             $table->integer('criancas_0_5')->default('0');
@@ -28,8 +29,9 @@ class CreateReservasTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('apartamento')->references('id')->on('apartamentos')->onDelete('CASCADE'); 
+            $table->foreign('apartamento')->references('id')->on('apartamentos'); 
             $table->foreign('cliente')->references('id')->on('users')->onDelete('CASCADE'); 
+            $table->foreign('empresa')->references('id')->on('empresas'); 
         });
     }
 

@@ -105,7 +105,44 @@ class WebController extends Controller
         ]);
     }
 
-    
+    public function artigo(Request $request)
+    {
+        $post = Post::where('slug', $request->slug)->postson()->first();
+        
+        $categorias = CatPost::orderBy('titulo', 'ASC')
+            ->where('tipo', 'artigo')
+            ->get();
+        $postsMais = Post::orderBy('views', 'DESC')
+            ->where('id', '!=', $post->id)
+            ->where('tipo', 'artigo')
+            ->limit(4)
+            ->postson()
+            ->get();
+        $postsTags = Post::orderBy('views', 'DESC')
+            ->where('tipo', 'artigo')
+            ->where('tags', '!=', '')
+            ->where('id', '!=', $post->id)
+            ->postson()
+            ->limit(11)
+            ->get();
+        
+        $post->views = $post->views + 1;
+        $post->save();
+
+        $head = $this->seo->render($post->titulo ?? 'Informática Livre',
+            $post->titulo,
+            route('web.blog.artigo', ['slug' => $post->slug]),
+            $post->cover() ?? $this->configService->getMetaImg()
+        );
+
+        return view('web.'.$this->configService->getConfig()->template.'.blog.artigo', [
+            'head' => $head,
+            'post' => $post,
+            'postsMais' => $postsMais,
+            'postsTags' => $postsTags,
+            'categorias' => $categorias
+        ]);
+    }    
 
     public function pesquisa(Request $request)
     {
@@ -194,7 +231,8 @@ class WebController extends Controller
         $dadosForm = $request->all();
         $acomodacoes = Apartamento::available()->get();
 
-        $paginareserva = Post::where('id', 5)->first();
+        $paginareserva = Post::where('id', 15)->first();
+        $politicareserva = Post::where('id', 14)->first();
         $paginareserva->views = $paginareserva->views + 1;
         $paginareserva->save();
 
@@ -209,6 +247,7 @@ class WebController extends Controller
             'dadosForm' => $dadosForm,
             'acomodacoes' => $acomodacoes,
             'paginareserva' => $paginareserva,
+            'politicareserva' => $politicareserva,
             'estados' => $this->estadoService->getEstados()
         ]);
     }

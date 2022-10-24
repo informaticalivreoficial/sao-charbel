@@ -1,158 +1,330 @@
 @extends("web.{$configuracoes->template}.master.master")
 
 @section('content')
-<main class="site-main page-spacing">
-	
-	<div class="container-fluid page-banner about-banner" style="background-color:#3B4C76 !important;">
-		<div class="container">
-			<h3 style="color: #fff;">Pré-reserva</h3>
-			<ol class="breadcrumb">
-				<li><a style="color: #fff;" href="{{route('web.home')}}">Início</a></li>
-				<li class="active">Pré-reserva</li>
-			</ol>
-		</div>
-	</div>
-    
-    <div class="section-padding"></div>
-    <div id="booking-section" class="booking-section2 container-fluid no-padding">
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="booking-form2 col-md-12 col-sm-12 pull-right">
-                    <br />
-                    <!--
-<div class="img-block">
-    					<div class="col-md-6 col-sm-12 col-xs-6 no-padding"><h4>15<sup>%</sup><sub>Off</sub><span>Somente pelo site</span></h4></div>
-    					<div class="col-md-6 col-sm-12 col-xs-6 no-padding"><img src="<?php //echo PATCH;?>/images/booking-ic.png" alt="Booking"/></div>
-    				</div> 
--->                   
-					<h3><strong>Efetuar uma Pré-Reserva</strong></h3>
+<section class="banner-tems text-center">
+    <div class="container">
+        <div class="banner-content">
+            <h2 class="h2sombra">Pré-Reserva</h2>
+            <p>&nbsp;</p>
+        </div>
+    </div>
+</section>
 
-					<form class="col-md-12 col-sm-12 col-xs-12 no-padding j_formsubmit" action="" method="post" autocomplete="off">
-                        @csrf
-                        <div class="form-group col-12">
+<!-- BODY-ROOM-5 -->
+<section class="check-out">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div class="check-left ">                    
+                    <form action="" method="post" class="j_formsubmit" autocomplete="off"> 
+                    @csrf
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div id="js-contact-result"></div>
                             <!-- HONEYPOT -->
                             <input type="hidden" class="noclear" name="bairro" value="" />
-                            <input type="text" class="noclear" style="display: none;" name="cidade1" value="" />    
+                            <input type="text" class="noclear" style="display: none;" name="cidade1" value="" />
                         </div>
-						
-                        <div class="form_hide">
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                                <label>Selecione o Apartamento</label>
-                                <select name="apart_id" class="form-control">
-                                    @if(!empty($acomodacoes) && $acomodacoes->count() > 0)
-                                        <option value="">Selecione</option>
-                                        @foreach($acomodacoes as $apartamento)
-                                            <option value="{{$apartamento->id}}" {{(!empty($dadosForm) && $dadosForm['apart_id'] == $apartamento->id ? 'selected' : '')}}>{{$apartamento->titulo}}</option>
-                                        @endforeach                                                                        
-                                    @endif                                
-                                 </select>
-                            </div>
+                    </div>
+                    <div class="form_hide">  
 
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12 col-lg-6">
-                                <label>Nome</label>
-                                <input type="text" name="nome" value="" class="form-control"/>
+                    <h2 style="margin-bottom: 20px;">Tipo de Hospedagem</h2>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="radio" class="check_fisica" style="width:30px;" name="tipo_reserva" value="0" checked /><span style="color: #232323;" class="check_fisica">Pessoa Física</span>
                             </div>
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12 col-lg-6">
-                                <label>Email</label>
-                                <input type="text" name="email" value="" class="form-control"/>
+                        </div>  
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="radio" class="check_empresa" style="width:30px;" name="tipo_reserva" value="1" /><span style="color: #232323;" class="check_empresa">Empresa</span>
                             </div>
-    
-                            <div class="form-group col-md-4 col-sm-4 col-xs-12 col-lg-4">
-                                <label>Telefone</label>
-                                <input type="text" name="telefone" value="" class="form-control celularmask"/>
+                        </div>                                                  
+                    </div>   
+                    
+                    <div class="div_empresa">
+                        <h2 style="margin-bottom: 20px;">Dados da Empresa</h2>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Nome da Empresa </span>*</label></label>
+                                    <input type="text" name="empresa_nome" class="form-control"/>
+                                </div>
                             </div>
-    
-                            <div class="form-group col-md-4 col-sm-4 col-xs-12 col-lg-4">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label>CNPJ <span>*</span></label>
+                                    <input type="text" name="cnpj" class="form-control cnpjmask"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label>Telefone <span>*</span></label>
+                                    <input type="text" name="telefone_empresa" class="form-control celularmask"/>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    
+                    <h2 style="margin-bottom: 20px;">Dados Pessoais</h2> 
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Nome <span>*</span></label>
+                                <input type="text" name="nome" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label>CPF <span>*</span></label>
+                                <input type="text" name="cpf" class="form-control cpfmask"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label>RG <span>*</span></label>
+                                <input type="text" name="rg" class="form-control rgmask"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label>Data de Nasc.<span>*</span></label>
+                                <input type="text" name="nasc" id="nasc" class="form-control nascmask"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="form-group">
                                 <label>Estado</label>
-                                <select name="uf" class="form-control" id="state-dd">
+                                <select name="uf" class="selectReservas" id="state-dd">
                                     @if(!empty($estados))
                                         <option value="">Selecione</option>
                                         @foreach($estados as $estado)
                                             <option value="{{$estado->estado_id}}">{{$estado->estado_nome}}</option>
                                         @endforeach                                                                        
                                     @endif                                
-                                 </select>
+                                </select>
                             </div>
-                            
-                            <div class="form-group col-md-4 col-sm-4 col-xs-12 col-lg-4">
+                        </div>
+                        <div class="col-xs-9 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
                                 <label>Cidade</label>
-                                <select id="city-dd" class="form-control" name="cidade">
+                                <select id="city-dd" class="selectReservas" name="cidade">
                                     <option value="">Selecione o Estado</option>
                                 </select>
                             </div>
-    
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                <label>Check-in</label>
-                                <i class="fa fa-calendar-minus-o"></i>
-                                <input type="text" name="checkin" class="form-control datepicker-here" value="{{(!empty($dadosForm['checkin']) ? $dadosForm['checkin'] : '')}}" data-language='pt-BR'/>
-                            </div>
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                <label>Check-out</label>
-                                <i class="fa fa-calendar-minus-o"></i>
-                                <input type="text" class="form-control datepicker-here" name="checkout" value="{{(!empty($dadosForm['checkin']) ? $dadosForm['checkout'] : '')}}" data-language='pt-BR'/>
-                            </div>
-                            
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                <label>Adultos</label>
-                                <select name="num_adultos" class="selectpicker">
-                                    @for($i = 1; $i <= 5; $i++)
-                                        <option value="{{$i}}" {{(!empty($dadosForm['adultos']) && $i == $dadosForm['adultos'] ? 'selected' : ($i == 1 ? 'selected' : ''))}}>
-                                            {{ $i }}
-                                        </option>
-                                    @endfor
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                <label>Crianças de 0 a 5</label>
-                                <select name="num_cri_0_5" class="selectpicker">
-                                    @for($i = 0; $i <= 5; $i++)
-                                        <option value="{{$i}}" {{(!empty($dadosForm['cri_0_5']) && $i == $dadosForm['cri_0_5'] ? 'selected' : ($i == 0 ? 'selected' : ''))}}>
-                                            {{ $i }}
-                                        </option>
-                                    @endfor
-                                </select>
-                            </div>	
-                            
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                <textarea placeholder="Informações Adicionais" name="mensagem" class="form-control"></textarea>
-                            </div>
-                            
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                <button class="read-more" id="js-contact-btn" type="submit" title="Efetuar Pré-Reserva">Efetuar Pré-Reserva <i class="fa fa-long-arrow-right"></i></button>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+                            <div class="form-group">
+                                <label>CEP </label>
+                                <input type="text" name="cep" id="cep" class="form-control cepmask"/>
                             </div>
                         </div>
-					</form>
-				</div>
-			</div>
+                    </div>
+                    
+                    <div class="row">                        
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Rua </label>
+                                <input type="text" name="rua" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>Bairro </label>
+                                <input type="text" name="bairro" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+                            <div class="form-group">
+                                <label>Número</label>
+                                <input type="text" name="num" class="form-control"/>
+                            </div>
+                        </div>                            
+                    </div>
+                    <hr>
+                    <h2 style="margin-bottom: 20px;">Regime de ocupação</h2>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="radio" style="width:30px;" name="ocupacao" value="1" checked />Com Café da manhã
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="radio" style="width:30px;" name="ocupacao" value="0" />Sem Café da manhã
+                            </div>
+                        </div>                                                    
+                    </div>
+                    <hr>
+                    <h2 style="margin-bottom: 20px;">Informações de Contato</h2>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>E-mail <span>*</span></label>
+                                <input type="text" name="email" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>Telefone Móvel<span>*</span></label>
+                                <input type="text" name="telefone_cliente" class="form-control celularmask"/>
+                            </div>
+                        </div>                        
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>WhatsApp </label>
+                                <input type="text" name="whatsapp" class="form-control celularmask"/>
+                            </div>
+                        </div>                            
+                    </div>
+                    <hr>
+                    <h2 style="margin-bottom: 20px;">Informações da Pré-reserva</h2>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                            <div class="check_availability-field">
+                            <label>Adultos<span>*</span></label><br />
+                            <select name="num_adultos" class="selectReservas">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <option value="{{$i}}" {{(!empty($dadosForm['adultos']) && $i == $dadosForm['adultos'] ? 'selected' : ($i == 1 ? 'selected' : ''))}}>
+                                        {{ $i }}
+                                    </option>
+                                @endfor
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                            <div class="check_availability-field">
+                            <label>Crianças de 0 a 5 anos<span>*</span></label><br />
+                            <select name="num_cri_0_5" class="selectReservas">
+                                @for($i = 0; $i <= 5; $i++)
+                                    <option value="{{$i}}" {{(!empty($dadosForm['cri_0_5']) && $i == $dadosForm['cri_0_5'] ? 'selected' : ($i == 0 ? 'selected' : ''))}}>
+                                        {{ $i }}
+                                    </option>
+                                @endfor
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="check_availability-field">
+                                <label>Apartamento<span>*</span></label><br />
+                                <select name="apart_id" class="selectReservas">
+                                    @if(!empty($acomodacoes) && $acomodacoes->count() > 0)
+                                        <option value="">Selecione</option>
+                                        @foreach($acomodacoes as $apartamento)
+                                            <option value="{{$apartamento->id}}" {{(!empty($dadosForm) && $dadosForm['apart_id'] == $apartamento->id ? 'selected' : '')}}>{{$apartamento->titulo}}</option>
+                                        @endforeach                                                                        
+                                    @endif                            
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                            <div class="form-group">
+                                <label>Check In <span>*</span></label>
+                                <input type="text" data-language='pt-BR' class="form-control datepicker-here" data-date-format="dd/mm/yyyy" name="checkin" value="{{(!empty($dadosForm['checkini']) ? $dadosForm['checkini'] : '')}}" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                            <div class="form-group">
+                                <label>Check Out <span>*</span></label>
+                                <input type="text" data-language='pt-BR' class="form-control datepicker-here" data-date-format="dd/mm/yyyy" name="checkout" value="{{(!empty($dadosForm['checkouti']) ? $dadosForm['checkouti'] : '')}}" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label style="margin-bottom:3px;"><a href="javascript:;" onclick="jQuery('#modal-3').modal('show');">Política de Reservas e Hotel</a></label>
+                                <button type="submit" id="js-contact-btn" class="btncheckout">Enviar Agora</button>                                    
+                            </div>
+                        </div>                            
+                    </div>
+                 </div>   
+                </form>    
+                </div>
+                <!-- item-right -->
+            </div>
             
-			<div class="col-md-6 col-sm-6 col-xs-12">
-                <br />
-				{!! $paginareserva->content !!}                
-			</div>
-            
-            <div class="section-padding"></div>
-		</div>
-    
-</main>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="check-right ">
+                    {!! $paginareserva->content !!}
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+</section>
+<!-- END/BODY-ROOM-5-->
+
+<div class="modal fade custom-width" id="modal-3" aria-hidden="true" style="overflow: hidden;display: none;width:96%;">
+<div class="modal-dialog" style="width: 100%;">
+    <div class="modal-content" style="width: 100%;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h4 class="modal-title">{{$politicareserva->titulo}}</h4>
+            </div> 
+            <div class="modal-body">
+                {!! $politicareserva->content !!}
+            </div>		
+    </div>
+</div>
+</div>
+
 @endsection
 
 @section('css')
-<link href="{{url(asset('backend/plugins/airdatepicker/css/datepicker.min.css'))}}" rel="stylesheet" type="text/css">
+    <link href="{{url(asset('backend/plugins/airdatepicker/css/datepicker.min.css'))}}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('js')
-<script src="{{url(asset('backend/plugins/airdatepicker/js/datepicker.min.js'))}}"></script>
-<script src="{{url(asset('backend/plugins/airdatepicker/js/i18n/datepicker.pt-BR.js'))}}"></script>
-<script src="{{url(asset('backend/assets/js/jquery.mask.js'))}}"></script>
+    <script src="{{url(asset('backend/plugins/airdatepicker/js/datepicker.min.js'))}}"></script>
+    <script src="{{url(asset('backend/plugins/airdatepicker/js/i18n/datepicker.pt-BR.js'))}}"></script>
+    <script src="{{url(asset('backend/assets/js/jquery.mask.js'))}}"></script>
 <script>
     $(document).ready(function () { 
         var $celularmask = $(".celularmask");
         $celularmask.mask('(99) 99999-9999', {reverse: false});
+        var $cepmask = $(".cepmask");
+        $cepmask.mask('99999-999', {reverse: false});
+        var $rgmask = $(".rgmask");
+        $rgmask.mask('99.999.999-9', {reverse: false});
+        var $cpfmask = $(".cpfmask");
+        $cpfmask.mask('999.999.999-99', {reverse: false});
+        var $cnpjmask = $(".cnpjmask");
+        $cnpjmask.mask('99.999.999/9999-99', {reverse: false});
+        var $nascmask = $(".nascmask");
+        $nascmask.mask('99/99/9999', {reverse: false});
     });
 
-    
-
     $(function(){
+
+        // $('.datepicker-here').datepicker({
+        //     autoClose: true,         
+        //     minDate: new Date()
+        // });
+
+        $('.div_empresa').css("display", "none");
+
+        $('.check_empresa').click(function() {                       
+            $('.div_empresa').css("display", "block");         
+            $( ".check_empresa" ).prop( "checked", true );         
+            $( ".check_fisica" ).prop( "checked", false );         
+        });
+
+        $('.check_fisica').click(function() {                       
+            $('.div_empresa').css("display", "none");
+            $( ".check_empresa" ).prop( "checked", false );         
+            $( ".check_fisica" ).prop( "checked", true );        
+        });
+
+
         $("#city-dd").attr("disabled", true);
         $('#state-dd').on('change', function () {
             var idState = this.value;
@@ -179,12 +351,6 @@
     });
 
     $(function(){
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
         $('.j_formsubmit').submit(function (){
             var form = $(this);
@@ -217,7 +383,7 @@
                 },
                 complete: function(resposta){
                     form.find("#js-contact-btn").attr("disabled", false);
-                    form.find('#js-contact-btn').html('Efetuar Pré-Reserva <i class="fa fa-long-arrow-right"></i>');                                
+                    form.find('#js-contact-btn').html('Enviar Agora');                                
                 }
 
             });

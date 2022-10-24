@@ -243,6 +243,11 @@ return [
             'icon' => 'fas fa-cog',
         ],
         [
+            'text' => 'Menu',
+            'url'  => 'admin/menus',
+            'icon' => 'fas fa-bars',
+        ],
+        [
             'text' => 'Apartamentos',            
             'icon' => 'fas fa-building',
             'submenu' => [
@@ -287,6 +292,11 @@ return [
                     'url'  => 'admin/usuarios/create',
                 ]
             ]
+        ],
+        [
+            'text' => 'Empresas',
+            'url'  => 'admin/empresas',
+            'icon' => 'fas fa-industry',
         ],
         [
             'text' => 'Posts',            

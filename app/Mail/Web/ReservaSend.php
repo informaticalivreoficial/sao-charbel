@@ -33,7 +33,7 @@ class ReservaSend extends Mailable
     {
         return $this->replyTo($this->data['reply_email'], $this->data['reply_name'])
             ->to($this->data['siteemail'], $this->data['sitename'])
-            ->cc(['suporte@informaticalivre.com.br','villadirimi@terra.com.br'])
+            ->cc('suporte@informaticalivre.com.br')
             ->from($this->data['siteemail'], $this->data['sitename'])
             ->subject('✔️ Pré-reserva: ' . $this->data['reply_name'])
             ->markdown('emails.reserva', [
@@ -46,7 +46,7 @@ class ReservaSend extends Mailable
                 'checkout' => $this->data['checkout'],
                 'adultos' => $this->data['adultos'],
                 'criancas' => $this->data['criancas'],
-                'mensagem' => $this->data['mensagem'],
+                'ocupacao' => $this->data['ocupacao'],
                 'codigo' => $this->data['codigo'],
                 'apartamento' => $this->data['apartamento']
         ]);

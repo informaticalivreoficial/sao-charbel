@@ -63,7 +63,7 @@
                 </div>
                 <div class="header-top-right">
                     <ul>
-                        <li class="dropdown"><a href="" title="Efetuar Pré-Reserva" class="dropdown-toggle">Efetuar Pré-Reserva</a></li>                    
+                        <li class="dropdown"><a href="{{route('web.reservar')}}" title="Efetuar Pré-Reserva" class="dropdown-toggle">Efetuar Pré-Reserva</a></li>                    
                     </ul>
                 </div>
             </div>

@@ -118,7 +118,7 @@ $config = [
                                         <div class="form-group">
                                             <label class="labelforms"><b>Check in</b></label>
                                             <div class="input-group">
-                                                <input type="text" id="check" class="form-control datepicker-here" data-language='pt-BR' name="checkin" value="{{ old('checkin') ?? $reserva->checkin }}"/>
+                                                <input type="text" id="check1" class="form-control datepicker-here" data-language='pt-BR' name="checkin" value="{{ old('checkin') ?? $reserva->checkin }}"/>
                                                 <div class="input-group-append">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                 </div>
@@ -196,12 +196,16 @@ $config = [
         $money.mask('R$ 000.000.000.000.000,00', {reverse: true, placeholder: "R$ 0,00"});
     });
 
-    $(function() {
-        $('#check').datepicker({
-            dateFormat: 'mm/dd/yyyy',
-            minDate: new Date() // Now can select only dates, which goes after today
-        })
-    });
+    // $(function() {
+    //     $('#check').datepicker({
+    //         dateFormat: 'mm/dd/yyyy',
+    //         minDate: new Date() // Now can select only dates, which goes after today
+    //     });
+    //     $('#check1').datepicker({
+    //         dateFormat: 'mm/dd/yyyy',
+    //         minDate: new Date() // Now can select only dates, which goes after today
+    //     });
+    // });
     
 </script> 
 @endsection

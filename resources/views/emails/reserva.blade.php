@@ -24,11 +24,11 @@
             <h1 style="font-size:20px; color:#000; background:#F4F4F4; padding:10px;">Código da reserva - {{$codigo}}</h1>
             <table>
                 <tr>
-                <th style="width: 30%;text-align:left;">Apartamento</th>
-                <th style="text-align:center;">Check-in</th> 
-                <th style="text-align:center;">Check-out</th>                       
-                <th style="width: 25%;text-align:center;">----------</th>                        
-                <th style="text-align:center;">Quantidade</th>
+                    <th style="width: 30%;text-align:left;">Apartamento</th>
+                    <th style="text-align:center;">Check-in</th> 
+                    <th style="text-align:center;">Check-out</th>                       
+                    <th style="width: 25%;text-align:center;">----------</th>                        
+                    <th style="text-align:center;">Quantidade</th>
                 </tr>
                 <tr>
                     <td style="text-align:left;">{{$apartamento}}</td>
@@ -64,7 +64,7 @@
             <br />
             <strong>Observações: </strong> 
             </p>   
-            <p style="padding-left:10px;font:20px Trebuchet MS, Arial, Helvetica, sans-serif; color:#09F;">@php echo nl2br($mensagem); @endphp</p> 
+            <p style="padding-left:10px;font:20px Trebuchet MS, Arial, Helvetica, sans-serif; color:#09F;">@php echo nl2br($ocupacao); @endphp</p> 
             <p style="padding-left:10px;">
                 <a href="{{route('login')}}">Clique aqui para gerenciar as reservas! </a>
             </p>    
