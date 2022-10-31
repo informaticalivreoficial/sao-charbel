@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\{
     CatPostController,
     ConfigController,
     EmpresaController,
+    GaleriaController,
+    MenuController,
     NewsletterController,
     ParceiroController,
     ReservaController,
@@ -183,15 +185,24 @@ Route::prefix('admin')->middleware('auth')->group( function(){
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas.index');
 
     //****************************** Menu *******************************************/
-    // Route::match(['post', 'get'], 'empresas/fetchCity', [EmpresaController::class, 'fetchCity'])->name('empresas.fetchCity');
-    // Route::get('empresas/set-status', [EmpresaController::class, 'empresaSetStatus'])->name('empresas.empresaSetStatus');
-    // Route::delete('empresas/deleteon', [EmpresaController::class, 'deleteon'])->name('empresas.deleteon');
-    // Route::get('empresas/delete', [EmpresaController::class, 'delete'])->name('empresas.delete');
-    // Route::put('empresas/{id}', [EmpresaController::class, 'update'])->name('empresas.update');
-    // Route::get('empresas/{id}/edit', [EmpresaController::class, 'edit'])->name('empresas.edit');
-    // Route::get('empresas/create', [EmpresaController::class, 'create'])->name('empresas.create');
-    // Route::post('empresas/store', [EmpresaController::class, 'store'])->name('empresas.store');
-    // Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas.index');
+    Route::get('menus/set-status', [MenuController::class, 'menuSetStatus'])->name('menus.menuSetStatus');
+    Route::delete('menus/deleteon', [MenuController::class, 'deleteon'])->name('menus.deleteon');
+    Route::get('menus/delete', [MenuController::class, 'delete'])->name('menus.delete');
+    Route::put('menus/{id}', [MenuController::class, 'update'])->name('menus.update');
+    Route::get('menus/{id}/edit', [MenuController::class, 'edit'])->name('menus.edit');
+    Route::get('menus/create', [MenuController::class, 'create'])->name('menus.create');
+    Route::post('menus/store', [MenuController::class, 'store'])->name('menus.store');
+    Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
+
+    //****************************** Galerias *******************************************/
+    Route::get('galerias/set-status', [GaleriaController::class, 'galeriaSetStatus'])->name('galerias.galeriaSetStatus');
+    Route::delete('galerias/deleteon', [GaleriaController::class, 'deleteon'])->name('galerias.deleteon');
+    Route::get('galerias/delete', [GaleriaController::class, 'delete'])->name('galerias.delete');
+    Route::put('galerias/{id}', [GaleriaController::class, 'update'])->name('galerias.update');
+    Route::get('galerias/{id}/edit', [GaleriaController::class, 'edit'])->name('galerias.edit');
+    Route::get('galerias/create', [GaleriaController::class, 'create'])->name('galerias.create');
+    Route::post('galerias/store', [GaleriaController::class, 'store'])->name('galerias.store');
+    Route::get('/galerias', [GaleriaController::class, 'index'])->name('galerias.index');
 
     /** Reservas */
     Route::get('reservas/delete', [ReservaController::class, 'delete'])->name('reservas.delete');

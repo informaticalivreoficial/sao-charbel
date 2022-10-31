@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenusTable extends Migration
+class CreateGaleriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,15 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('galerias', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('post');
-            $table->integer('id_pai')->unsigned()->nullable();
             $table->string('titulo');
-            $table->text('link')->nullable();
-            $table->integer('target')->nullable();
-            $table->string('url')->nullable();
+            $table->text('content')->nullable();
+            $table->string('slug')->nullable();
+            $table->bigInteger('views')->default(0);
             $table->integer('status')->nullable();
             
             $table->timestamps();
-
-            $table->foreign('post')->references('id')->on('posts');
         });
     }
 
@@ -36,6 +32,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('galerias');
     }
 }

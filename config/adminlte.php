@@ -331,6 +331,11 @@ return [
             'icon' => 'fas fa-film',
         ],
         [
+            'text' => 'Galerias',
+            'url'  => 'admin/galerias',
+            'icon' => 'fas fa-images',
+        ],
+        [
             'text' => 'Email',            
             'icon' => 'fas fa-fw fa-envelope',
             'submenu' => [
