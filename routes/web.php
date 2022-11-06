@@ -54,6 +54,10 @@ Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
     Route::get('/noticia/{slug}', [WebController::class, 'noticia'])->name('noticia');
     Route::get('/noticias', [WebController::class, 'noticias'])->name('noticias');
     Route::get('/noticias/categoria/{slug}', [WebController::class, 'categoria'])->name('noticia.categoria');
+   
+    //*************************************** Galerias *******************************************/
+    Route::get('/galeria/{slug}', [WebController::class, 'galeria'])->name('galeria');
+    Route::get('/galerias', [WebController::class, 'galerias'])->name('galerias');
     
     //** Pesquisa */
     Route::match(['post', 'get'], '/pesquisa', [WebController::class, 'pesquisa'])->name('pesquisa');
@@ -197,6 +201,8 @@ Route::prefix('admin')->middleware('auth')->group( function(){
     //****************************** Galerias *******************************************/
     Route::get('galerias/set-status', [GaleriaController::class, 'galeriaSetStatus'])->name('galerias.galeriaSetStatus');
     Route::delete('galerias/deleteon', [GaleriaController::class, 'deleteon'])->name('galerias.deleteon');
+    Route::post('galerias/image-set-cover', [GaleriaController::class, 'imageSetCover'])->name('galerias.imageSetCover');
+    Route::delete('galerias/image-remove', [GaleriaController::class, 'imageRemove'])->name('galerias.imageRemove');
     Route::get('galerias/delete', [GaleriaController::class, 'delete'])->name('galerias.delete');
     Route::put('galerias/{id}', [GaleriaController::class, 'update'])->name('galerias.update');
     Route::get('galerias/{id}/edit', [GaleriaController::class, 'edit'])->name('galerias.edit');

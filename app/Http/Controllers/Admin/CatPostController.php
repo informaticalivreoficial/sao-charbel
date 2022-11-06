@@ -16,7 +16,7 @@ class CatPostController extends Controller
 {
     public function index()
     {
-        $categorias = CatPost::where('id_pai', null)->orderBy('tipo', 'ASC')
+        $categorias = CatPost::whereNull('id_pai')->orderBy('tipo', 'ASC')
                     ->orderBy('status', 'ASC')
                     ->orderBy('created_at', 'DESC')->paginate(25);
         return view('admin.categorias.index', [

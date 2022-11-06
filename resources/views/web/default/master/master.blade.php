@@ -89,55 +89,20 @@
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            {{--
-                                $readPaginasMenu = read('menu_topo',"WHERE status = '1' AND id_pai IS NULL ORDER BY nome ASC");
-                                foreach($readPaginasMenu as $paginaMenu1);
-                                if(!$paginaMenu1){
-                                    echo '';
-                                }else{
-                                    foreach($readPaginasMenu as $paginaMenu): 
-                                        //Verifica se abre na mesma janela ou não
-                                        if($paginaMenu['target'] == '1'){
-                                            $target = '_blank';
-                                        }else{
-                                            $target = '_self';
-                                        }
-                                        // Verifica se é link externo ou interno
-                                        if($paginaMenu['link'] == ''){
-                                            $link = $paginaMenu['url'];
-                                        }elseif($paginaMenu['link'] != ''){
-                                            $link = ''.BASE.'/'.$paginaMenu['link'].'';
-                                        }
-                                    // Consulta se é submenu //     
-                                    $readPaginasSubMenu1 = read('menu_topo',"WHERE status = '1' AND id_pai = '$paginaMenu[id]'");
-                                    foreach($readPaginasSubMenu1 as $submenu1);
-                                    if($submenu1['id_pai'] == $paginaMenu['id']){
-                                    echo '<li class="dropdown "><a target="'.$target.'" href="'.$link.'" class="dropdown-toggle" data-toggle="dropdown">'.$paginaMenu['nome'].'<b class="caret"></b></a>';
-                                    echo '<ul class="dropdown-menu icon-fa-caret-up submenu-hover">';
-                                    foreach($readPaginasSubMenu1 as $submenu):
-                                            //Verifica se abre na mesma janela ou não
-                                            if($submenu['target'] == '1'){
-                                                $target1 = '_blank';
-                                            }else{
-                                                $target1 = '_self';
-                                            }
-                                        // Verifica se é link externo ou interno
-                                            if($submenu['link'] == ''){
-                                                $link1 = $submenu['url'];
-                                            }elseif($submenu['link'] != ''){
-                                                $link1 = ''.BASE.'/'.$submenu['link'].'';
-                                            }
-                                            echo '<li><a target="'.$target1.'" href="'.$link1.'">'.$submenu['nome'].'</a></li>';
-                                    endforeach;
-                                    echo '</ul>';
-                                    echo '</li>'; 
-                                    }else{
-                                    echo '<li><a target="'.$target.'" href="'.$link.'">'.$paginaMenu['nome'].'</a></li>'; 
-                                    }                                                                
-                                    endforeach;
-                                }                
-                            --}}
-                            
+                            @if (!empty($Links) && $Links->count())                            
+                                @foreach($Links as $menuItem)                            
+                                <li {{($menuItem->children && $menuItem->parent ? 'class=dropdown' : '')}}>
+                                    <a {{($menuItem->target == 1 ? 'target=_blank' : '')}} href="{{($menuItem->tipo == 'Página' ? route('web.pagina', [ 'slug' => ($menuItem->post != null ? $menuItem->PostObject->slug : '#') ]) : $menuItem->url)}}" {{($menuItem->children && $menuItem->parent ? 'class=dropdown-toggle data-toggle=dropdown' : '')}}>{{ $menuItem->titulo }}{!!($menuItem->children && $menuItem->parent ? "<b class=\"caret\"></b>" : '')!!}</a>
+                                    @if( $menuItem->children && $menuItem->parent)
+                                    <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
+                                        @foreach($menuItem->children as $subMenuItem)
+                                        <li><a {{($subMenuItem->target == 1 ? 'target=_blank' : '')}} href="{{($subMenuItem->tipo == 'Página' ? route('web.pagina', [ 'slug' => ($subMenuItem->post != null ? $subMenuItem->PostObject->slug : '#') ]) : $subMenuItem->url)}}">{{ $subMenuItem->titulo }}</a></li>                                        
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                </li>
+                                @endforeach
+                            @endif
                             <li><a href="{{route('web.atendimento')}}" title="Atendimento">Atendimento</a></li>
                         </ul>
                     </div>

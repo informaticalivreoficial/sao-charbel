@@ -15,16 +15,16 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('post');
+            $table->unsignedInteger('post')->nullable();
             $table->integer('id_pai')->unsigned()->nullable();
             $table->string('titulo');
+            $table->string('tipo');
             $table->text('link')->nullable();
             $table->integer('target')->nullable();
             $table->string('url')->nullable();
             $table->integer('status')->nullable();
             
             $table->timestamps();
-
             $table->foreign('post')->references('id')->on('posts');
         });
     }
