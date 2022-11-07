@@ -15,6 +15,7 @@ use App\Models\{
     CatPost,
     Cidades,
     Estados,
+    Galeria,
     Newsletter,
     Parceiro,
     Slide,
@@ -61,7 +62,8 @@ class WebController extends Controller
         $slides = Slide::orderBy('created_at', 'DESC')
                     ->available()
                     ->where('expira', '>=', Carbon::now())
-                    ->get();       
+                    ->get();   
+        $galerias = Galeria::orderBy('created_at', 'DESC')->available()->limit(3)->get();
         
         $head = $this->seo->render($this->configService->getConfig()->nomedosite ?? 'Informática Livre',
             $this->configService->getConfig()->descricao ?? 'Informática Livre desenvolvimento de sistemas web desde 2005',
@@ -74,7 +76,8 @@ class WebController extends Controller
             'slides' => $slides,
             'apartamentos' => $apartamentos,
             'artigos' => $artigos,
-            'acomodacoes' => $acomodacoes
+            'acomodacoes' => $acomodacoes,
+            'galerias' => $galerias
 		]);
     }
 
@@ -303,5 +306,37 @@ class WebController extends Controller
         $url = $this->configService->getConfig()->sitemap;
         $data = file_get_contents($url);
         return response($data, 200, ['Content-Type' => 'application/xml']);
+    }
+
+    public function galerias()
+    {
+        $galerias = Galeria::orderBy('created_at', 'DESC')->available()->get();
+        
+        $head = $this->seo->render('Galerias de Fotos - ' . $this->configService->getConfig()->nomedosite,
+            'Galerias de Fotos',
+            route('web.galerias'),
+            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+        );
+
+        return view('web.'.$this->configService->getConfig()->template.'.galerias',[
+            'galerias' => $galerias,
+            'head' => $head
+        ]);
+    }
+
+    public function galeria($slug)
+    {
+        $galeria = Galeria::where('slug', $slug)->available()->first();
+        
+        $head = $this->seo->render($galeria->titulo . ' - ' . $this->configService->getConfig()->nomedosite,
+            $galeria->titulo,
+            route('web.galeria', ['slug' => $galeria->slug]),
+            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+        );
+
+        return view('web.'.$this->configService->getConfig()->template.'.galeria',[
+            'galeria' => $galeria,
+            'head' => $head
+        ]);
     }
 }

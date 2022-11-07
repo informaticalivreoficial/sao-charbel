@@ -197,12 +197,76 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1spt-BR!2sbr!4v1488893723237!6m8!1m7!1sF%3A-hNOO3QBnDs4%2FWJtai4KscMI%2FAAAAAAAAEJs%2FB_Qh4lC_tTAGJL50IBdEP-e3tWMjIMveQCLIB!2m2!1d-23.43332223874241!2d-45.07221445441246!3f150.19085246815183!4f-0.20905841325189556!5f0.7820865974627469" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0;width: 80%;" height="450" allowfullscreen></iframe>
         </div>
     </section>
-    
+
+    @if (!empty($galerias) && $galerias->count() > 0)
+        <section class="gallery-our">
+            <div class="container-fluid">
+                <div class="gallery">
+                    <h2 class="title-gallery">Fotos</h2>
+                    <div class="outline"></div>                    
+                        <ul class="nav nav-tabs text-uppercase">
+                            @foreach ($galerias as $key => $item)
+                                <li class="{{($key == 0 ? 'active' : '')}}">
+                                    <a data-toggle="tab" href="#{{$item->id}}">{{$item->titulo}}</a>
+                                </li>
+                            @endforeach                   
+                        </ul>
+                    <br/>
+                    
+                    <div class="tab-content">
+                        @foreach ($galerias as $key => $galeria)
+                            <div id="{{$galeria->id}}" class="tab-pane fade in {{($key == 0 ? 'active' : '')}}"> 
+                                <div class="product "> 
+                                    <div class="row">
+                                        @if ($galeria->images()->get()->count())
+                                        @php
+                                            $i = 1;
+                                        @endphp
+                                            @foreach ($galeria->images()->get() as $gb)
+                                                @if ($i <= 8)
+                                                    <div class="gallery_product col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+                                                        <div class="wrap-box">
+                                                            <div class="box-img">
+                                                                <img src="{{ $gb->url_image }}" class="img img-responsive" alt="{{$galeria->titulo}}" title="{{$galeria->titulo}}">
+                                                            </div>
+                                                            <div class="gallery-box-main ">
+                                                                <div class="gallery-icon">
+                                                                    <a href="{{route('web.galeria',['slug' => $galeria->slug ])}}" title="{{$galeria->titulo}}"><i class="ion-ios-plus-empty" aria-hidden="true" ></i> </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif                                                
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                            @endforeach
+                                        @endif
+                                    </div> 
+                                </div> 
+                            </div>
+                        @endforeach
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="{{route('web.galerias')}}"><button type="button" class="btn btn-default btn-our">VER MAIS FOTOS</button></a>
+                    </div>
+                </div>
+                
+            </div>
+        
+        </section>
+    @endif
 
 @endsection
 
 @section('css')
-
+    <style>
+        .img{
+            width: 260px !important;
+            height: 169px !important;
+        }
+    </style>
 @endsection
 
 @section('js')
