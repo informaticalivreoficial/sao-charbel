@@ -63,20 +63,13 @@ if($link->id_pai != null){
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label class="labelforms"><b>*Tipo:</b></label>
-                                        <input class="form-control" name="tipo" value="{{$sublink->tipo}}" disabled>
-                                    </div>
-                                </div>                                 
-                            @else      
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label class="labelforms"><b>*Tipo:</b></label>
                                         <select name="tipo" class="form-control tipo_link">
                                             <option value=""> Selecione </option>
                                             <option value="pagina" {{ (old('pagina') == 'pagina' ? 'selected' : ($link->tipo == 'Página' ? 'selected' : '')) }}>Página</option>
                                             <option value="url" {{ (old('url') == 'url' ? 'selected' : ($link->tipo == 'URL' ? 'selected' : '')) }}>URL</option>
                                         </select>
                                     </div>
-                                </div> 
+                                </div>                                 
                             @endif 
                             
                             <div class="col-3">

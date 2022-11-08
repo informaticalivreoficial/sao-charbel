@@ -94,6 +94,14 @@ class SlideController extends Controller
         return redirect()->route('slides.edit', $slide->id)->with(['color' => 'success', 'message' => 'Slide atualizado com sucesso!']);
     }
 
+    public function slideSetStatus(Request $request)
+    {        
+        $slide = Slide::find($request->id);
+        $slide->status = $request->status;
+        $slide->save();
+        return response()->json(['success' => true]);
+    }
+
     public function delete(Request $request)
     {
         $slide = Slide::where('id', $request->id)->first();

@@ -44,7 +44,7 @@
     </div>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="info-box">
-            <span class="info-box-icon bg-teal"><a href="{{ route('posts.artigos') }}" title="Artigos"><i class="fa far fa-users"></i></a></span>
+            <span class="info-box-icon bg-teal"><a href="{{ route('users.index') }}" title="Clientes"><i class="fa far fa-users"></i></a></span>
 
             <div class="info-box-content">
                 <span class="info-box-text"><b>Clientes</b></span>

@@ -6,33 +6,9 @@
 
     <!-- Slider Section -->
     
-    <div id="index12" class="owl-carousel  owl-theme">        
+    <div id="index12" class="owl-carousel  owl-theme">       
             
-        <div class="item itr">
-            <img alt="Previsão do tempo" src="{{url('frontend/assets/images/tempo.png')}}" class="img-responsive">
-            <div class="container">
-                <div class="carousel-caption ">
-                    <h1 class="v2">Previsão para '.$forecast->name.' Hoje</h1>                 
-                    <div class="principal">
-                        <div class="temp">Manhã <br /> 
-                            <img src="'.PATCH.'/include/climatempo/images/'.$day->morningIcon.'.png" /><br />
-                            <b class="temp-min">'.$day->minMorningTemp.' °C</b> -
-                            <b class="temp-max">'.$day->maxMorningTemp.' °C</b><br /> 
-                        </div>
-                        <div class="temp">Tarde <br /> 
-                            <img src="'.PATCH.'/include/climatempo/images/'.$day->afternoonIcon.'.png" /><br />
-                            <b class="temp-min">'.$day->minAfternoonTemp.' °C</b> -
-                            <b class="temp-max">'.$day->maxAfternoonTemp.' °C</b><br /> 
-                        </div>
-                        <div class="temp">Noite <br /> 
-                            <img src="'.PATCH.'/include/climatempo/images/'.$day->nightIcon.'.png" /><br />
-                            <b class="temp-min">'.$day->minNightTemp.' °C</b> -
-                            <b class="temp-max">'.$day->maxNightTemp.' °C</b><br /> 
-                        </div>
-                    </div>                      
-                </div>
-            </div>
-        </div>
+        
         @if (!empty($slides) && $slides->count() > 0)
             @foreach ($slides as $key => $slide)  
                 <div class="item{{($key == 0 ? ' active' : '')}}">
@@ -176,7 +152,7 @@
                         <div class="item ">
                             <div class="events-item">
                                 <div class="events-img">
-                                    <img src="{{$artigo->cover()}}" class="img-responsive" alt="{{$artigo->titulo}}">
+                                    <img src="{{$artigo->cover()}}" class="imgblog img-responsive" alt="{{$artigo->titulo}}">
                                 </div>
                                 <div class="events-content">
                                     <a href="{{route('web.blog.artigo', ['slug' => $artigo->slug])}}" title="{{$artigo->titulo}}">
@@ -265,6 +241,10 @@
         .img{
             width: 260px !important;
             height: 169px !important;
+        }
+        .imgblog{
+            width: 370px !important;
+            height: 500px !important;
         }
     </style>
 @endsection
