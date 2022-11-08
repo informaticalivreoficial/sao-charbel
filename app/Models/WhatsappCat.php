@@ -5,24 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Whatsapp extends Model
+class WhatsappCat extends Model
 {
     use HasFactory;
 
-    protected $table = 'whatsapps'; 
-    
+    protected $table = 'whatsapp_cats';
+
     protected $fillable = [
-        'nome',
+        'titulo',
         'status',
-        'autorizacao',
-        'categoria',
-        'numero',
-        'count'
+        'content',
+        'sistema'
     ];
-    
+
     /**
      * Scopes
-    */
+     */
     public function scopeAvailable($query)
     {
         return $query->where('status', 1);
@@ -32,13 +30,13 @@ class Whatsapp extends Model
     {
         return $query->where('status', 0);
     }
-    
+
     /**
      * Relacionamentos
-    */  
-    public function whatsappCat()
+    */
+    public function whatsapp()
     {
-        return $this->belongsTo(WhatsappCat::class, 'categoria', 'id');
+        return $this->hasMany(Whatsapp::class, 'categoria', 'id');
     }
 
     /**
@@ -51,18 +49,9 @@ class Whatsapp extends Model
         }
         return date('d/m/Y', strtotime($value));
     }
-    
-    public function getAutorizacaoAttribute($value)
-    {
-        if(empty($value)){
-            return null;
-        }
-
-        return ($value == '1' ? '<span class="badge bg-success">Sim</span>' : '<span class="badge bg-danger">Não</span>');
-    }
 
     public function setStatusAttribute($value)
     {
         $this->attributes['status'] = ($value == '1' ? 1 : 0);
-    } 
+    }
 }

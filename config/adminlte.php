@@ -357,7 +357,24 @@ return [
                 ],
             ]
         ],      
-        
+        [
+            'text' => 'WhatsApp',            
+            'icon' => 'fab fa-fw fa-whatsapp',
+            'submenu' => [
+                [
+                    'text' => 'Listas',
+                    'url'  => 'admin/whatsapp',
+                ],
+                [
+                    'text' => 'Cadastrar Lista',
+                    'url'  => 'admin/whatsapp/cadastrar',
+                ],
+                [
+                    'text' => 'Cadastrar Email',
+                    'url'  => 'admin/whatsapp/numero/cadastrar',
+                ],
+            ]
+        ],
     ],
 
     /*

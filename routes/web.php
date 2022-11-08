@@ -18,7 +18,8 @@ use App\Http\Controllers\Admin\{
     ParceiroController,
     ReservaController,
     SitemapController,
-    SlideController
+    SlideController,
+    WhatsappController
 };
 use App\Http\Controllers\Web\RssFeedController;
 use App\Http\Controllers\Web\SendEmailController;
@@ -89,6 +90,25 @@ Route::prefix('admin')->middleware('auth')->group( function(){
     Route::get('listas/email/cadastrar', [NewsletterController::class, 'newsletterCreate'])->name('lista.newsletter.create');
     Route::post('listas/email/store', [NewsletterController::class, 'newsletterStore'])->name('listas.newsletter.store');
     Route::get('listas/emails/categoria/{categoria}', [NewsletterController::class, 'newsletters'])->name('lista.newsletters');
+
+    //******************************* WhatsApp *********************************************/
+    Route::match(['post', 'get'], 'whatsapp/padrao', [WhatsappController::class, 'padraoMark'])->name('whatsapp.padrao');
+    Route::get('whatsapp/set-status', [WhatsappController::class, 'whatsappSetStatus'])->name('whatsapp.whatsappSetStatus');
+    Route::get('whatsapp/delete', [WhatsappController::class, 'whatsappDelete'])->name('whatsapp.delete');
+    Route::delete('whatsapp/deleteon', [WhatsappController::class, 'whatsappDeleteon'])->name('whatsapp.deleteon');
+    Route::put('whatsapp/{id}', [WhatsappController::class, 'whatsappUpdate'])->name('whatsapp.update');
+    Route::get('whatsapp/{id}/editar', [WhatsappController::class, 'whatsappEdit'])->name('whatsapp.edit');
+    Route::get('whatsapp/cadastrar', [WhatsappController::class, 'whatsappCreate'])->name('whatsapp.create');
+    Route::post('whatsapp/store', [WhatsappController::class, 'whatsappStore'])->name('whatsapp.store');
+    Route::get('whatsapp', [WhatsappController::class, 'index'])->name('whatsapp');
+
+    // Route::put('listas/email/{id}', [NewsletterController::class, 'newsletterUpdate'])->name('listas.newsletter.update');
+    // Route::get('listas/email/{id}/edit', [NewsletterController::class, 'newsletterEdit'])->name('listas.newsletter.edit');
+    // Route::get('listas/email/delete', [NewsletterController::class, 'emailDelete'])->name('listas.newsletter.delete');
+    // Route::delete('listas/email/deleteon', [NewsletterController::class, 'emailDeleteon'])->name('listas.newsletter.deleteon');
+    // Route::get('listas/email/cadastrar', [NewsletterController::class, 'newsletterCreate'])->name('lista.newsletter.create');
+    // Route::post('listas/email/store', [NewsletterController::class, 'newsletterStore'])->name('listas.newsletter.store');
+    // Route::get('listas/emails/categoria/{categoria}', [NewsletterController::class, 'newsletters'])->name('lista.newsletters');
 
     //******************* Slides ************************************************/
     Route::get('slides/set-status', [SlideController::class, 'slideSetStatus'])->name('slides.slideSetStatus');

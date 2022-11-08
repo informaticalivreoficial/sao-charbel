@@ -14,8 +14,17 @@ class CreateWhatsappsTable extends Migration
     public function up()
     {
         Schema::create('whatsapps', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('nome');
+            $table->integer('status')->default(1);
+            $table->integer('autorizacao')->nullable();
+            $table->unsignedInteger('categoria');
+            $table->string('numero')->nullable();
+            $table->bigInteger('count')->default(0);
+            
             $table->timestamps();
+            
+            $table->foreign('categoria')->references('id')->on('whatsapp_cats')->onDelete('CASCADE');
         });
     }
 
