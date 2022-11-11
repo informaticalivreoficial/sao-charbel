@@ -1,16 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Gerenciar Listas')
+@section('title', 'Gerenciar Listas de Números')
 
 @section('content_header')
 <div class="row mb-2">
     <div class="col-sm-6">
-        <h1><i class="fas fa-suitcase mr-2"></i> Gerenciar Listas</h1>
+        <h1><i class="fas fa-suitcase mr-2"></i> Gerenciar Listas de Números</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">                    
             <li class="breadcrumb-item"><a href="{{route('home')}}">Painel de Controle</a></li>
-            <li class="breadcrumb-item active">Gerenciar Listas</li>
+            <li class="breadcrumb-item active">Gerenciar Listas de Números</li>
         </ol>
     </div>
 </div>
@@ -19,7 +19,7 @@
 @section('content')
 <div class="card">
     <div class="card-header text-right">
-        <a href="{{route('whatsapp.create')}}" class="btn btn-sm btn-default"><i class="fas fa-plus mr-2"></i> Cadastrar Lista</a>
+        <a href="{{route('lista.whatsapp.create')}}" class="btn btn-sm btn-default"><i class="fas fa-plus mr-2"></i> Cadastrar Lista</a>
     </div>        
     <!-- /.card-header -->
     <div class="card-body">
@@ -37,7 +37,7 @@
                 <thead>
                     <tr>
                         <th>Lista</th>
-                        <th class="text-center">Emails</th>
+                        <th class="text-center">Números</th>
                         <th class="text-center">Criado em:</th>
                         <th>Ações</th>
                     </tr>
@@ -46,15 +46,15 @@
                     @foreach($listas as $lista)                    
                     <tr style="{{ ($lista->status == '1' ? '' : 'background: #fffed8 !important;')  }}">                            
                         <td><img src="{{url(asset('backend/assets/images/seta.png'))}}"> {{$lista->titulo}}</td>
-                        <td class="text-center">{{$lista->newsletters->count()}}</td>
+                        <td class="text-center">{{$lista->whatsapp->count()}}</td>
                         <td class="text-center">{{$lista->created_at}}</td>                           
                         <td class="acoes">
-			    <a href="javascript:void(0)" title="Marcar como Padrão" class="btn btn-xs {{ ($lista->sistema == true ? 'btn-warning' : 'btn-secondary') }} icon-notext j_padrao" data-action="{{ route('listas.padrao', ['id' => $lista->id]) }}"><i class="fas fa-magnet"></i></a>
+			    <a href="javascript:void(0)" title="Marcar como Padrão" class="btn btn-xs {{ ($lista->sistema == true ? 'btn-warning' : 'btn-secondary') }} icon-notext j_padrao" data-action="{{ route('lista.whatsapp.padrao', ['id' => $lista->id]) }}"><i class="fas fa-magnet"></i></a>
                             <a class="btn btn-secondary btn-xs" href=""><i class="fa fa-download"></i> Exportar csv</a>
                             <a class="btn btn-secondary btn-xs" href=""><i class="fa fa-download"></i> Exportar excel</a>
                             <input type="checkbox" data-onstyle="success" data-offstyle="warning" data-size="mini" class="toggle-class" data-id="{{ $lista->id }}" data-toggle="toggle" data-style="slow" data-on="<i class='fas fa-check'></i>" data-off="<i style='color:#fff !important;' class='fas fa-exclamation-triangle'></i>" {{ $lista->status == true ? 'checked' : ''}}>
-                            <a data-toggle="tooltip" data-placement="top" title="Editar Lista" href="{{route('whatsapp.edit',[ 'id' => $lista->id])}}" class="btn btn-xs btn-default"><i class="fas fa-pen"></i></a>
-                            <a href="{{route('lista.newsletters',['categoria' => $lista->id])}}" class="btn btn-xs btn-info text-white"><i class="fas fa-search"></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Editar Lista" href="{{route('lista.whatsapp.edit',[ 'id' => $lista->id])}}" class="btn btn-xs btn-default"><i class="fas fa-pen"></i></a>
+                            <a href="{{route('lista.numeros',['categoria' => $lista->id])}}" class="btn btn-xs btn-info text-white"><i class="fas fa-search"></i></a>
                             <button data-placement="top" title="Remover Lista" type="button" class="btn btn-xs btn-danger text-white j_modal_btn" data-id="{{$lista->id}}" data-toggle="modal" data-target="#modal-default"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
@@ -148,7 +148,7 @@
                 $.ajax({
                     type: 'GET',
                     dataType: 'JSON',
-                    url: "{{ route('listas.delete') }}",
+                    url: "{{ route('lista.whatsapp.delete') }}",
                     data: {
                        'id': lista_id
                     },
@@ -156,9 +156,9 @@
                         if(data.error){
                             $('.j_param_data').html(data.error);
                             $('#id_lista').val(data.id);
-                            $('#frm').prop('action','{{ route('listas.deleteon') }}');
+                            $('#frm').prop('action','{{ route('lista.whatsapp.deleteon') }}');
                         }else{
-                            $('#frm').prop('action','{{ route('listas.deleteon') }}');
+                            $('#frm').prop('action','{{ route('lista.whatsapp.deleteon') }}');
                         }
                     }
                 });

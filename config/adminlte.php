@@ -363,11 +363,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Listas',
-                    'url'  => 'admin/whatsapp',
+                    'url'  => 'admin/whatsapp/listas',
                 ],
                 [
                     'text' => 'Cadastrar Lista',
-                    'url'  => 'admin/whatsapp/cadastrar',
+                    'url'  => 'admin/whatsapp/listas/cadastrar',
                 ],
                 [
                     'text' => 'Cadastrar Email',

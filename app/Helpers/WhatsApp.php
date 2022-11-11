@@ -15,7 +15,7 @@ class WhatsApp
         if(!empty($nZap)):
             $textZap = ($textZap == null ? Renato::getSaudacao() : $textZap);
             $zap = '55' . preg_replace("/[^0-9]/", "", $nZap);
-            return "https://api.whatsapp.com/send?l=pt_pt&phone={$zap}&text={$textZap}";
+            return "https://web.whatsapp.com/send?l=pt_pt&phone={$zap}&text={$textZap}";
         endif;
         return null;
     }

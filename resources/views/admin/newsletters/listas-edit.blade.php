@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastrar Lista')
+@section('title', 'Editar Lista')
 
 @section('content_header')
 <div class="row mb-2">
     <div class="col-sm-6">
-        <h1><i class="fas fa-search mr-2"></i>Cadastrar Lista</h1>
+        <h1><i class="fas fa-search mr-2"></i>Editar Lista</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Painel de Controle</a></li>
             <li class="breadcrumb-item"><a href="{{route('listas')}}">Listas</a></li>
-            <li class="breadcrumb-item active">Cadastrar Lista</li>
+            <li class="breadcrumb-item active">Editar Lista</li>
         </ol>
     </div>
 </div> 

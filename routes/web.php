@@ -92,23 +92,24 @@ Route::prefix('admin')->middleware('auth')->group( function(){
     Route::get('listas/emails/categoria/{categoria}', [NewsletterController::class, 'newsletters'])->name('lista.newsletters');
 
     //******************************* WhatsApp *********************************************/
-    Route::match(['post', 'get'], 'whatsapp/padrao', [WhatsappController::class, 'padraoMark'])->name('whatsapp.padrao');
-    Route::get('whatsapp/set-status', [WhatsappController::class, 'whatsappSetStatus'])->name('whatsapp.whatsappSetStatus');
-    Route::get('whatsapp/delete', [WhatsappController::class, 'whatsappDelete'])->name('whatsapp.delete');
-    Route::delete('whatsapp/deleteon', [WhatsappController::class, 'whatsappDeleteon'])->name('whatsapp.deleteon');
-    Route::put('whatsapp/{id}', [WhatsappController::class, 'whatsappUpdate'])->name('whatsapp.update');
-    Route::get('whatsapp/{id}/editar', [WhatsappController::class, 'whatsappEdit'])->name('whatsapp.edit');
-    Route::get('whatsapp/cadastrar', [WhatsappController::class, 'whatsappCreate'])->name('whatsapp.create');
-    Route::post('whatsapp/store', [WhatsappController::class, 'whatsappStore'])->name('whatsapp.store');
-    Route::get('whatsapp', [WhatsappController::class, 'index'])->name('whatsapp');
+    Route::match(['post', 'get'], 'whatsapp/padrao', [WhatsappController::class, 'padraoMark'])->name('lista.whatsapp.padrao');
+    Route::get('whatsapp/listas/set-status', [WhatsappController::class, 'listaSetStatus'])->name('lista.whatsapp.SetStatus');
+    Route::get('whatsapp/listas/delete', [WhatsappController::class, 'listaDelete'])->name('lista.whatsapp.delete');
+    Route::delete('whatsapp/listas/deleteon', [WhatsappController::class, 'listaDeleteon'])->name('lista.whatsapp.deleteon');
+    Route::put('whatsapp/listas/{id}', [WhatsappController::class, 'listaUpdate'])->name('lista.whatsapp.update');
+    Route::get('whatsapp/listas/{id}/editar', [WhatsappController::class, 'listaEdit'])->name('lista.whatsapp.edit');
+    Route::get('whatsapp/listas/cadastrar', [WhatsappController::class, 'listaCreate'])->name('lista.whatsapp.create');
+    Route::post('whatsapp/listas/store', [WhatsappController::class, 'listaStore'])->name('lista.whatsapp.store');
+    Route::get('whatsapp/listas', [WhatsappController::class, 'listas'])->name('listas.whatsapp');
 
-    // Route::put('listas/email/{id}', [NewsletterController::class, 'newsletterUpdate'])->name('listas.newsletter.update');
-    // Route::get('listas/email/{id}/edit', [NewsletterController::class, 'newsletterEdit'])->name('listas.newsletter.edit');
-    // Route::get('listas/email/delete', [NewsletterController::class, 'emailDelete'])->name('listas.newsletter.delete');
-    // Route::delete('listas/email/deleteon', [NewsletterController::class, 'emailDeleteon'])->name('listas.newsletter.deleteon');
-    // Route::get('listas/email/cadastrar', [NewsletterController::class, 'newsletterCreate'])->name('lista.newsletter.create');
-    // Route::post('listas/email/store', [NewsletterController::class, 'newsletterStore'])->name('listas.newsletter.store');
-    // Route::get('listas/emails/categoria/{categoria}', [NewsletterController::class, 'newsletters'])->name('lista.newsletters');
+    Route::put('whatsapp/numero/{id}', [WhatsappController::class, 'numeroUpdate'])->name('lista.numero.update');
+    Route::get('whatsapp/set-status', [WhatsappController::class, 'numeroSetStatus'])->name('lista.numero.SetStatus');
+    Route::get('whatsapp/numero/{id}/edit', [WhatsappController::class, 'numeroEdit'])->name('lista.numero.edit');
+    Route::get('whatsapp/numero/delete', [WhatsappController::class, 'numeroDelete'])->name('lista.numero.delete');
+    Route::delete('whatsapp/numero/deleteon', [WhatsappController::class, 'numeroDeleteon'])->name('lista.numero.deleteon');
+    Route::get('whatsapp/numero/cadastrar', [WhatsappController::class, 'numeroCreate'])->name('lista.numero.create');
+    Route::post('whatsapp/numero/store', [WhatsappController::class, 'numeroStore'])->name('lista.numero.store');
+    Route::get('whatsapp/numeros/categoria/{categoria}', [WhatsappController::class, 'numeros'])->name('lista.numeros');
 
     //******************* Slides ************************************************/
     Route::get('slides/set-status', [SlideController::class, 'slideSetStatus'])->name('slides.slideSetStatus');
