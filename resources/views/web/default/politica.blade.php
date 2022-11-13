@@ -1,29 +1,30 @@
 @extends("web.{$configuracoes->template}.master.master")
 
 @section('content')
-<main class="site-main page-spacing">   
-    <div class="container-fluid page-banner about-banner" style="background-color:#3B4C76 !important;">
-        <div class="container">
-            <h3 style="color: #fff;">Política de Privacidade</h3>
-            <ol class="breadcrumb">
-                <li><a style="color: #fff;" href="{{route('web.home')}}">Início</a></li>
-                <li class="active">Política de Privacidade</li>
-            </ol>
+<section class="banner-tems text-center">
+    <div class="container">
+        <div class="banner-content">
+            <h2 class="h2sombra">Política de Privacidade</h2>
+            <p>&nbsp;</p>
         </div>
     </div>
-    
-    <div class="section-padding"></div>
-    
-    <div class="container">		
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">                    
-                    {!! $configuracoes->politicas_de_privacidade !!}								
-                    <br />                           
-                </div>
+</section>
+
+<section class="section-about">
+    <div class="container">
+        <div class="row">
+            <div class="wrap-about">               
+                <div class="about-item" style="padding:10px;">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="text">
+                            <div class="desc">
+                                {!! $configuracoes->politicas_de_privacidade !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>                                       
             </div>
         </div>
     </div>
-    <div class="section-padding"></div>    
-</main>
+</section>
 @endsection

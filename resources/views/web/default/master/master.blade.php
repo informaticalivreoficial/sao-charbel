@@ -225,9 +225,10 @@
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="list-content">                    
                             <ul>                            
-                            <li><a href="/pagina/galerias" title="Contact">Galerias</a></li>
-                            <li><a href="/pagina/reservar" title="Contact">Pré-Reserva</a></li>  
-                            <li><a href="/pagina/atendimento" title="Contact">Atendimento</a></li>                          
+                            <li><a href="/pagina/galerias" title="Galerias">Galerias</a></li>
+                            <li><a href="/pagina/reservar" title="Pré-Reserva">Pré-Reserva</a></li>  
+                            <li><a href="/pagina/atendimento" title="Atendimento">Atendimento</a></li>                          
+                            <li><a href="{{route('web.politica')}}" title="Política de Privacidade">Política de Privacidade</a></li>                          
                             </ul>
                         </div>
                     </div>

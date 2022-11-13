@@ -28,14 +28,6 @@ use App\Http\Controllers\Web\WebController;
 
 Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
 
-    // Route::get('sqlexport', function(){
-    //     $dbexport = Spatie\DbDumper\Databases\MySql::create()
-    //     ->setDbName(env('DB_DATABASE'))
-    //     ->setUserName(env('DB_USERNAME'))
-    //     ->setPassword(env('DB_PASSWORD'))
-    //     ->dumpToFile('dump.sql');
-    //     return $dbexport;
-    // });
     /** Página Inicial */
     Route::get('/', [WebController::class, 'home'])->name('home');
     Route::match(['post', 'get'], '/fetchCity', [WebController::class, 'fetchCity'])->name('fetchCity');
