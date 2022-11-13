@@ -60,7 +60,7 @@
                     <div class="contact-form">
                         <form method="post" action="" class="j_formsubmit" autocomplete="off">  
                             @csrf                          
-                            <div class="row form_hide">                                
+                            <div class="row">                                
                                 <div class="col-sm-12">
                                     <div id="js-contact-result"></div>
                                 </div>
@@ -114,7 +114,7 @@
                 dataType: 'JSON',
                 beforeSend: function(){
                     form.find(".btncheckout").attr("disabled", true);
-                    form.find('.btncheckout').val("Carregando...");                
+                    form.find('.btncheckout').html("Carregando...");                
                     form.find('.alert').fadeOut(500, function(){
                         $(this).remove();
                     });
@@ -134,7 +134,7 @@
                 },
                 complete: function(resposta){
                     form.find(".btncheckout").attr("disabled", false);
-                    form.find('.btncheckout').val("Enviar Agora");                                
+                    form.find('.btncheckout').html("Enviar Agora");                                
                 }
             });
 
