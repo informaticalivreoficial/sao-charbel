@@ -14,32 +14,17 @@
     <div class="container">
         <div class="row">
             <div class="wrap-about">
-                @if (!$post->images()->get()->count())
-                    <div class="about-item" style="padding:10px;">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="text">
-                                <div class="desc">
-                                    {!!$post->content!!}
-                                </div>
+                
+                <div class="about-item" style="padding:10px;">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="text">
+                            <div class="desc">
+                                {!!$post->content!!}
                             </div>
                         </div>
                     </div>
-                @else
-                    <div class="about-item" style="padding:10px;">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="img">
-                                <img src="{{$post->cover()}}" alt="{{$post->titulo}}" class="img-responsive"/>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="text">
-                                <div class="desc">
-                                    {!!$post->content!!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                </div>
+                
                 
                 <br />
                 @if($post->images()->get()->count()) 
