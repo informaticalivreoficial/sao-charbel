@@ -238,6 +238,9 @@
                             @if($configuracoes->email)
                                 <i class="fa fa-envelope"></i> {{$configuracoes->email}}
                             @endif 
+                            @if($configuracoes->email1)
+                                <i class="fa fa-envelope"></i> {{$configuracoes->email1}}
+                            @endif 
                             @if($configuracoes->rua)	
                                 <br /><i class="fa fa-map-marker"></i> {{$configuracoes->rua}}
                             @if($configuracoes->num)
