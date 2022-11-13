@@ -41,7 +41,6 @@
                             <th>Categoria</th>
                             <th class="text-center">Views</th>
                             <th class="text-center">Imagens</th>
-                            <th class="text-center">Menu</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -57,11 +56,7 @@
                             <td>{{$post->categoriaObject->titulo}}</td>
                             <td class="text-center">{{$post->views}}</td>
                             <td class="text-center">{{$post->countimages()}}</td>
-                            <td class="text-center">
-                                @if ($post->id != 55)
-                                <input type="checkbox" data-onstyle="success" data-offstyle="warning" data-size="mini" class="toggle-menu" data-id="{{ $post->id }}" data-toggle="toggle" data-style="slow" data-on="<i class='fas fa-check'></i>" data-off="<i style='color:#fff !important;' class='fas fa-exclamation-triangle'></i>" {{ $post->menu == true ? 'checked' : ''}}>
-                                @endif                                
-                            </td>
+                            
                             <td>
                                 <input type="checkbox" data-onstyle="success" data-offstyle="warning" data-size="mini" class="toggle-class" data-id="{{ $post->id }}" data-toggle="toggle" data-style="slow" data-on="<i class='fas fa-check'></i>" data-off="<i style='color:#fff !important;' class='fas fa-exclamation-triangle'></i>" {{ $post->status == true ? 'checked' : ''}}>
                                 <a href="{{ route('posts.edit', [ 'id' => $post->id ]) }}" class="btn btn-xs btn-default"><i class="fas fa-pen"></i></a>

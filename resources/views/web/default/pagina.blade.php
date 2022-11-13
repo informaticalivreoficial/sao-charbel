@@ -1,55 +1,86 @@
 @extends("web.{$configuracoes->template}.master.master")
 
 @section('content')
-<main class="site-main page-spacing">
-    <!-- Page Banner -->
-    <div class="container-fluid page-banner about-banner" style="background-image: url({{$post->cover()}});">
-        <div class="container" style="margin-top: -20px !important;">
-            <h3 style="color: #fff;">{{$post->titulo}}</h3>
-            <ol class="breadcrumb">
-                <li><a style="color: #fff;" href="{{route('web.home')}}">Início</a></li>
-                <li class="active">{{$post->titulo}}</li>
-            </ol>
+<section class="banner-tems text-center">
+    <div class="container">
+        <div class="banner-content">
+            <h2 class="h2sombra">{{$post->titulo}}</h2>
+            <p>&nbsp;</p>
         </div>
-    </div><!-- Page Banner /- -->
-    
-    <div class="section-padding"></div>
-    <!-- container -->
-    <div class="container">		
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">                    
-                    {!!$post->content!!}									
-                    <br />
+    </div>
+</section>
 
-                    @if($post->images()->get()->count()) 
-                        <div id="booking-carousel" class="carousel slide booking-carousel" data-ride="carousel">  
-                            <div class="carousel-inner" role="listbox">
-                                @foreach($post->images()->get() as $key => $image)
-                                    <div class="item{{($key == 1 ? ' active' : '')}}">
-                                        <img src="{{ $image->url_image }}" alt="{{ $image->url_image }}" />
+<section class="section-about">
+    <div class="container">
+        <div class="row">
+            <div class="wrap-about">
+                @if (!$post->images()->get()->count())
+                    <div class="about-item" style="padding:10px;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="text">
+                                <div class="desc">
+                                    {!!$post->content!!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="about-item" style="padding:10px;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="img">
+                                <img src="{{$post->cover()}}" alt="{{$post->titulo}}" class="img-responsive"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="text">
+                                <div class="desc">
+                                    {!!$post->content!!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                
+                <br />
+                @if($post->images()->get()->count()) 
+                    <div class="gallery-our wrap-gallery-restaurant gallery_1" style="padding-bottom:10px;">
+                        <div class="container">
+                            <div class="gallery gallery-restaurant">
+                                <div class="tab-content">
+                                    <div id="all" class="tab-pane fade in active">
+                                        <div class="product ">
+                                            <div class="row">                         
+                                                @foreach($post->images()->get() as $key => $image)
+                                                    <div class="gallery_product col-lg-3 col-md-4 col-sm-6 col-xs-6 ">
+                                                        <div class="wrap-box-1">
+                                                            <div class="box-img">
+                                                                <a class="lightbox " href="{{ $image->url_image }}" data-littlelightbox-group="gallery" title="{{$post->titulo}}">
+                                                                <img src="{{ $image->url_image }}" class="img img-responsive" alt="{{$post->titulo}}" title="{{$post->titulo}}"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach                        
+                                            </div>
+                                        </div>
                                     </div>
-                                @endforeach
-                            </div>                      
-                            <a class="left carousel-control" href="#booking-carousel" role="button" data-slide="prev">
-                                <span class="fa fa-caret-left" aria-hidden="true"></span>
-                            </a>
-                            <a class="right carousel-control" href="#booking-carousel" role="button" data-slide="next">
-                                <span class="fa fa-caret-right" aria-hidden="true"></span>
-                            </a>
-                        </div>                                                   
-                    @endif                                   
-                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                                  
+                @endif                                 
             </div>
         </div>
-    </div><!-- container /- -->
-    <div class="section-padding"></div>
-    
-</main>
+    </div>
+</section>
 @endsection
 
 @section('css')
-    
+    <style>
+        .img{
+            width: 260px;
+            height: 169px;
+        }
+    </style>
 @endsection
 
 @section('js')
