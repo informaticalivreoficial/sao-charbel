@@ -286,11 +286,8 @@
 @section('js')
     <script src="{{url(asset('backend/plugins/airdatepicker/js/datepicker.min.js'))}}"></script>
     <script src="{{url(asset('backend/plugins/airdatepicker/js/i18n/datepicker.pt-BR.js'))}}"></script>
-    <script src="{{url(asset('backend/assets/js/jquery.mask.js'))}}"></script>
 <script>
     $(document).ready(function () { 
-        var $celularmask = $(".celularmask");
-        $celularmask.mask('(99) 99999-9999', {reverse: false});
         var $cepmask = $(".cepmask");
         $cepmask.mask('99999-999', {reverse: false});
         var $rgmask = $(".rgmask");

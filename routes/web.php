@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\{
 };
 use App\Http\Controllers\Web\RssFeedController;
 use App\Http\Controllers\Web\SendEmailController;
+use App\Http\Controllers\Web\SendWhatsappController;
 use App\Http\Controllers\Web\WebController;
 
 Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
@@ -38,6 +39,8 @@ Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
     Route::get('/sendEmail', [SendEmailController::class, 'sendEmail'])->name('sendEmail');
     Route::get('/sendNewsletter', [SendEmailController::class, 'sendNewsletter'])->name('sendNewsletter');
     Route::get('/acomodacaoSend', [SendEmailController::class, 'acomodacaoSend'])->name('acomodacaoSend');
+
+    Route::get('/sendWhatsApp', [SendWhatsappController::class, 'sendWhatsapp'])->name('sendWhatsapp');
     
     //****************************** Blog ***********************************************/
     Route::get('/blog/artigo/{slug}', [WebController::class, 'artigo'])->name('blog.artigo');

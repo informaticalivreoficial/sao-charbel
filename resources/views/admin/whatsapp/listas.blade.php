@@ -175,7 +175,7 @@
                 $.ajax({
                     type: 'GET',
                     dataType: 'JSON',
-                    url: "{{ route('listas.listaSetStatus') }}",
+                    url: "{{ route('lista.whatsapp.SetStatus') }}",
                     data: {
                         'status': status,
                         'id': lista_id

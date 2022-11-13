@@ -138,7 +138,7 @@
                 <div class="row">
                     @if (!empty($newsletterForm))
                         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
-                            <div class="icon-email">                            
+                            <div class="icon-email form_hide">                            
                                 <img src="{{url('frontend/assets/images/footer-top-icon-l.png')}}" alt="Email" class="img-responsive">
                             </div>
                         </div>
@@ -164,28 +164,33 @@
                             </div>
                         </div>
                     @endif
+                    @if (!empty($whatsappForm))
                     <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
-                        <div class="icon-email">                            
-                            <img src="{{url('frontend/assets/images/footer-top-icon-lI.png')}}" alt="Email" class="img-responsive">                            
+                        <div class="icon-email form_hide">                            
+                            <img src="{{url('frontend/assets/images/footer-top-icon-lI.png')}}" alt="WhatsApp" class="img-responsive">                            
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                         <div class="textbox">
-                            <form class="form-inline j_formsubmitnews" action="" method="post">
+                            <form class="form-inline j_formsubmitwhats" action="" method="post">
+                                @csrf
                                 <div class="form-group">
-                                <div class="alertas"></div>
+                                    <div id="js-whats-result"></div>
                                 <div class="form_hide">
                                     <div class="input-group">
-                                        <input class="noclear" type="hidden" name="action" value="whatsapp" />
+                                        <!-- HONEYPOT -->
+                                        <input type="hidden" class="noclear" name="bairro" value="" />
+                                        <input type="text" class="noclear" style="display: none;" name="cidade" value="" />
+                                        <input type="hidden" class="noclear" name="status" value="1" />
                                         <input type="text" style="width: 43%;border-right: 1px;border-right-color: #FFFFFF !important;" class="form-control" placeholder="Nome" name="nome"/>
-                                        <input type="text" class="form-control" style="width: 40%;" id="zapzap" placeholder="WhatsApp" name="numero"/>
+                                        <input type="text" class="form-control celularmask" style="width: 40%;" id="zapzap" placeholder="WhatsApp" name="numero"/>
                                         <button class="btn btn-secondary"><i class="ion-android-send"></i></button>
                                     </div>
                                 </div>
                                 </div>
                             </form>
                         </div>
-                        
+                    @endif    
                     {{--    @if ($configuracoes->facebook)
                             <a target="_blank" href="{{$configuracoes->facebook}}" title="Facebook"><i class="fa fa-facebook"></i></a>
                         @endif
@@ -298,6 +303,14 @@
 
     <script src="{{url('frontend/assets/js/sky.js')}}"></script>
 
+    <script src="{{url(asset('backend/assets/js/jquery.mask.js'))}}"></script>
+    <script>
+        $(document).ready(function () { 
+            var $celularmask = $(".celularmask");
+            $celularmask.mask('(99) 99999-9999', {reverse: false});            
+        });
+    </script>
+
     <script>
         $(function () {
     
@@ -331,6 +344,44 @@
                             form.find('.error-msg').fadeIn();                    
                         }else{
                             form.find('#js-newsletter-result').html('<div class="alert alert-success error-msg">'+ response.sucess +'</div>');
+                            form.find('.error-msg').fadeIn();                    
+                            form.find('input[class!="noclear"]').val('');
+                            form.find('.form_hide').fadeOut(500);
+                        }
+                    },
+                    complete: function(response){
+                        form.find("#js-subscribe-btn").attr("disabled", false);
+                        form.find('#js-subscribe-btn').val("Cadastrar");                                
+                    }
+    
+                });
+    
+                return false;
+            });
+
+            $('.j_formsubmitwhats').submit(function (){
+                var form = $(this);
+                var dataString = $(form).serialize();
+    
+                $.ajax({
+                    url: "{{ route('web.sendWhatsapp') }}",
+                    data: dataString,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    beforeSend: function(){
+                        form.find("#js-subscribe-btn").attr("disabled", true);
+                        form.find('#js-subscribe-btn').val("Carregando...");                
+                        form.find('.alert').fadeOut(500, function(){
+                            $(this).remove();
+                        });
+                    },
+                    success: function(response){
+                            $('html, body').animate({scrollTop:$('#js-whats-result').offset().top-70}, 'slow');
+                        if(response.error){
+                            form.find('#js-whats-result').html('<div class="alert alert-danger error-msg">'+ response.error +'</div>');
+                            form.find('.error-msg').fadeIn();                    
+                        }else{
+                            form.find('#js-whats-result').html('<div class="alert alert-success error-msg">'+ response.sucess +'</div>');
                             form.find('.error-msg').fadeIn();                    
                             form.find('input[class!="noclear"]').val('');
                             form.find('.form_hide').fadeOut(500);
