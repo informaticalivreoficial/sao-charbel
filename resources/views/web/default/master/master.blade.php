@@ -31,16 +31,16 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet"/>
     
     <!-- CSS LIBRARY -->
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/font-awesome.min.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/ionicons.min.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/owl.carousel.min.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/gallery.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/vit-gallery.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/bootstrap-select.min.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/bootstrap-datepicker.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/assets/css/renato.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/ionicons.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/owl.carousel.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/gallery.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/vit-gallery.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/bootstrap-select.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/bootstrap-datepicker.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/'.$configuracoes->template.'/assets/css/renato.css')}}" />
     <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="{{url('frontend/assets/css/styles.css')}}"/> 
+    <link rel="stylesheet" href="{{url('frontend/'.$configuracoes->template.'/assets/css/styles.css')}}"/> 
     
     @hasSection('css')
         @yield('css')
@@ -58,7 +58,7 @@
                         <span><i class="fa fa-envelope-o"></i> {{$configuracoes->email}}</span>
                     @endif               
                     @if ($configuracoes->whatsapp)
-                        <span><img src="{{url('frontend/assets/images/zapzap.png')}}" alt="WhatsApp" width="16" height="16" /> {{$configuracoes->whatsapp}}</span>
+                        <span><img src="{{url('frontend/'.$configuracoes->template.'/assets/images/zapzap.png')}}" alt="WhatsApp" width="16" height="16" /> {{$configuracoes->whatsapp}}</span>
                     @endif 
                 </div>
                 <div class="header-top-right">
@@ -126,7 +126,7 @@
         
     <div class="whatsapp-footer j_btnwhats">
         <a href="#">
-            <img src="{{url('frontend/assets/images/zap-topo.png')}}" alt="WhatsApp" />
+            <img src="{{url('frontend/'.$configuracoes->template.'/assets/images/zap-topo.png')}}" alt="WhatsApp" />
         </a>
     </div>
         <!-- Footer -->
@@ -139,7 +139,7 @@
                     @if (!empty($newsletterForm))
                         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
                             <div class="icon-email form_hide">                            
-                                <img src="{{url('frontend/assets/images/footer-top-icon-l.png')}}" alt="Email" class="img-responsive">
+                                <img src="{{url('frontend/'.$configuracoes->template.'/assets/images/footer-top-icon-l.png')}}" alt="Email" class="img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
@@ -167,7 +167,7 @@
                     @if (!empty($whatsappForm))
                     <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
                         <div class="icon-email form_hide">                            
-                            <img src="{{url('frontend/assets/images/footer-top-icon-lI.png')}}" alt="WhatsApp" class="img-responsive">                            
+                            <img src="{{url('frontend/'.$configuracoes->template.'/assets/images/footer-top-icon-lI.png')}}" alt="WhatsApp" class="img-responsive">                            
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
@@ -218,7 +218,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                         <div class="footer-logo text-center list-content">
                             <a href="{{route('web.home')}}" title="Skyline">
-                                <img src="{{url('frontend/assets/images/logomarca-footer.png')}}" alt="{{$configuracoes->nomedosite}}"/>
+                                <img src="{{url('frontend/'.$configuracoes->template.'/assets/images/logomarca-footer.png')}}" alt="{{$configuracoes->nomedosite}}"/>
                             </a>
                         </div>
                     </div>                    
@@ -259,10 +259,10 @@
                             <br /><i class="fa fa-phone"></i> {{$configuracoes->telefone3}}
                         @endif
                         @if($configuracoes->skype)
-                            <br /><img src="{{url('frontend/assets/images/skype.png')}}" alt="Skype" width="16" height="16" /> {{$configuracoes->skype}}
+                            <br /><img src="{{url('frontend/'.$configuracoes->template.'/assets/images/skype.png')}}" alt="Skype" width="16" height="16" /> {{$configuracoes->skype}}
                         @endif
                         @if($configuracoes->whatsapp)
-                            <br /><img src="{{url('frontend/assets/images/zapzap.png')}}" alt="WhatsApp" width="16" height="16" /> {{$configuracoes->whatsapp}}
+                            <br /><img src="{{url('frontend/'.$configuracoes->template.'/assets/images/zapzap.png')}}" alt="WhatsApp" width="16" height="16" /> {{$configuracoes->whatsapp}}
                         @endif                            
                         </div>
                     </div>
@@ -288,20 +288,20 @@
     <!--END / SROLL TOP-->
      
     <!-- LOAD JQUERY -->
-    <script src="{{url('frontend/assets/js/jquery-1.12.4.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/vit-gallery.js')}}"></script>
-    <script src="{{url('frontend/assets/js/jquery.countTo.js')}}"></script>
-    <script src="{{url('frontend/assets/js/jquery.appear.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/isotope.pkgd.min.js')}}"></script>
-    <script src="{{url('frontend/assets/js/bootstrap-select.js')}}"></script>
-    <script src="{{url('frontend/assets/js/jquery.littlelightbox.js')}}"></script>
-    <script src="{{url('frontend/assets/js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/vit-gallery.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/jquery.countTo.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/jquery.appear.min.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/bootstrap-select.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/jquery.littlelightbox.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/bootstrap-datepicker.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDyCxHyc8z9gMA5IlipXpt0c33Ajzqix4"></script>
     <!-- Custom jQuery -->
 
-    <script src="{{url('frontend/assets/js/sky.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/sky.js')}}"></script>
 
     <script src="{{url(asset('backend/assets/js/jquery.mask.js'))}}"></script>
     <script>

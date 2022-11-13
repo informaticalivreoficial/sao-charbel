@@ -40,14 +40,14 @@
                     <label>Check In</label>
                     <div id="datepicker" class="input-group date" data-date-format="dd/mm/yyyy">
                         <input class="form-control" name="checkini" type="text" value=""/>
-                        <span class="input-group-addon"><img src="{{url('frontend/assets/images/date-icon.png')}}" alt="Check in"/></span>
+                        <span class="input-group-addon"><img src="{{url('frontend/'.$configuracoes->template.'/assets/images/date-icon.png')}}" alt="Check in"/></span>
                     </div>
                 </div>
                 <div class="departure date-title ">
                     <label>Check Out</label>
                     <div id="datepickeri" class="input-group date" data-date-format="dd/mm/yyyy">
                         <input class="form-control" name="checkouti" type="text" value=""/>
-                        <span class="input-group-addon"><img src="{{url('frontend/assets/images/date-icon.png')}}" alt="Check out"/></span>
+                        <span class="input-group-addon"><img src="{{url('frontend/'.$configuracoes->template.'/assets/images/date-icon.png')}}" alt="Check out"/></span>
                     </div>
                 </div>
                 <div class="adults date-title ">

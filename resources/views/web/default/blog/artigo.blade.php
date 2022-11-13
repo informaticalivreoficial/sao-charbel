@@ -112,12 +112,12 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{url('frontend/assets/js/jsSocials/jssocials.css')}}" />
-    <link rel="stylesheet" href="{{url('frontend/assets/js/jsSocials/jssocials-theme-flat.css')}}" />
+    <link rel="stylesheet" href="{{url('frontend/'.$configuracoes->template.'/assets/js/jsSocials/jssocials.css')}}" />
+    <link rel="stylesheet" href="{{url('frontend/'.$configuracoes->template.'/assets/js/jsSocials/jssocials-theme-flat.css')}}" />
 @endsection
 
 @section('js')
-    <script src="{{url('frontend/assets/js/jsSocials/jssocials.min.js')}}"></script>
+    <script src="{{url('frontend/'.$configuracoes->template.'/assets/js/jsSocials/jssocials.min.js')}}"></script>
     <script>
         (function ($) {
             
