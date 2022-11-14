@@ -65,6 +65,7 @@ Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
     
     //** Pesquisa */
     Route::match(['post', 'get'], '/pesquisa', [WebController::class, 'pesquisa'])->name('pesquisa');
+    Route::match(['post', 'get'], '/zapchat', [WebController::class, 'zapchat'])->name('zapchat');
 
     /** FEED */
     Route::get('feed', [RssFeedController::class, 'feed'])->name('feed');

@@ -117,7 +117,8 @@
     @yield('content')
     <!-- FIM DO CONTEÚDO DO SITE --> 
 
-    <form class="btn-wats" action="" method="post" target="_blank">
+    <form class="btn-wats" action="{{ route('web.zapchat') }}" method="post" target="_blank">
+        @csrf
         <div class="balao">
             <textarea placeholder="Digite Aqui" name="texto"></textarea>
             <button name="sendwhats" type="submit">Enviar</button>
@@ -125,7 +126,7 @@
     </form>
         
     <div class="whatsapp-footer j_btnwhats">
-        <a href="#">
+        <a>
             <img src="{{url('frontend/'.$configuracoes->template.'/assets/images/zap-topo.png')}}" alt="WhatsApp" />
         </a>
     </div>
@@ -322,6 +323,11 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            $('.j_btnwhats').click(function (){         
+                $('.balao').slideDown();
+                return false;
             });
 
             // Seletor, Evento/efeitos, CallBack, Ação

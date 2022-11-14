@@ -339,4 +339,11 @@ class WebController extends Controller
             'head' => $head
         ]);
     }
+ 
+    public function zapchat(Request $request)
+    {
+        $textoZap = $request->texto;
+        $link = getNumZap($this->configService->getConfig()->whatsapp, $textoZap);
+        return redirect($link);
+    }
 }
