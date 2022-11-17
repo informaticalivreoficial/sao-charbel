@@ -68,7 +68,7 @@ class WebController extends Controller
         $head = $this->seo->render($this->configService->getConfig()->nomedosite ?? 'Informática Livre',
             $this->configService->getConfig()->descricao ?? 'Informática Livre desenvolvimento de sistemas web desde 2005',
             route('web.home'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         ); 
 
 		return view('web.'.$this->configService->getConfig()->template.'.home',[
@@ -87,7 +87,7 @@ class WebController extends Controller
         $head = $this->seo->render('Quem Somos - ' . $this->configService->getConfig()->nomedosite,
             $this->configService->getConfig()->descricao ?? 'Informática Livre desenvolvimento de sistemas web desde 2005',
             route('web.quemsomos'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
         return view('web.'.$this->configService->getConfig()->template.'.quem-somos',[
             'head' => $head,
@@ -100,7 +100,7 @@ class WebController extends Controller
         $head = $this->seo->render('Política de Privacidade - ' . $this->configService->getConfig()->nomedosite ?? 'Informática Livre',
             'Política de Privacidade - ' . $this->configService->getConfig()->nomedosite,
             route('web.politica'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
 
         return view('web.'.$this->configService->getConfig()->template.'.politica',[
@@ -135,7 +135,7 @@ class WebController extends Controller
         $head = $this->seo->render($post->titulo ?? 'Informática Livre',
             $post->titulo,
             route('web.blog.artigo', ['slug' => $post->slug]),
-            $post->cover() ?? $this->configService->getMetaImg()
+            $post->cover() ?? $this->configService->getConfig()->getMetaImg()
         );
 
         return view('web.'.$this->configService->getConfig()->template.'.blog.artigo', [
@@ -172,7 +172,7 @@ class WebController extends Controller
         $head = $this->seo->render('Pesquisa por ' . $request->search ?? 'Informática Livre',
             'Pesquisa - ' . $this->configService->getConfig()->nomedosite,
             route('web.blog.artigos'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
         
         return view('web.'.$this->configService->getConfig()->template.'.pesquisa',[
@@ -192,7 +192,7 @@ class WebController extends Controller
         $head = $this->seo->render($post->titulo ?? 'Informática Livre',
             $post->titulo,
             route('web.pagina', ['slug' => $post->slug]),
-            $post->cover() ?? $this->configService->getMetaImg()
+            $post->cover() ?? $this->configService->getConfig()->getMetaImg()
         );
 
         return view('web.'.$this->configService->getConfig()->template.'.pagina', [
@@ -207,7 +207,7 @@ class WebController extends Controller
         $head = $this->seo->render('Atendimento - ' . $this->configService->getConfig()->nomedosite,
             'Nossa equipe está pronta para melhor atender as demandas de nossos clientes!',
             route('web.atendimento'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );        
 
         return view('web.'.$this->configService->getConfig()->template.'.atendimento', [
@@ -221,7 +221,7 @@ class WebController extends Controller
         $head = $this->seo->render('Acomodações - ' . $this->configService->getConfig()->nomedosite,
             $this->configService->getConfig()->descricao ?? 'Informática Livre desenvolvimento de sistemas web desde 2005',
             route('web.acomodacoes'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
         return view('web.'.$this->configService->getConfig()->template.'.acomodacoes.index',[
             'head' => $head,
@@ -242,7 +242,7 @@ class WebController extends Controller
         $head = $this->seo->render('Pré-reserva - ' . $this->configService->getConfig()->nomedosite,
             'Pré-reserva - ' . $this->configService->getConfig()->nomedosite,
             route('web.reservar'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
         
         return view('web.'.$this->configService->getConfig()->template.'.acomodacoes.reservar',[
@@ -277,7 +277,7 @@ class WebController extends Controller
         $head = $this->seo->render($acomodacao->titulo . ' - ' . $this->configService->getConfig()->nomedosite,
             $acomodacao->descricao ?? 'Informática Livre desenvolvimento de sistemas web desde 2005',
             route('web.acomodacao', ['slug' => $acomodacao->slug]),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
         return view('web.'.$this->configService->getConfig()->template.'.acomodacoes.acomodacao',[
             'head' => $head,
@@ -293,7 +293,7 @@ class WebController extends Controller
         $head = $this->seo->render('Questionário de avaliação - ' . $this->configService->getConfig()->nomedosite,
             'Questionário de avaliação',
             route('web.avaliacao'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
 
         return view('web.'.$this->configService->getConfig()->template.'.cliente.avaliacao',[
@@ -315,7 +315,7 @@ class WebController extends Controller
         $head = $this->seo->render('Galerias de Fotos - ' . $this->configService->getConfig()->nomedosite,
             'Galerias de Fotos',
             route('web.galerias'),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
 
         return view('web.'.$this->configService->getConfig()->template.'.galerias',[
@@ -331,7 +331,7 @@ class WebController extends Controller
         $head = $this->seo->render($galeria->titulo . ' - ' . $this->configService->getConfig()->nomedosite,
             $galeria->titulo,
             route('web.galeria', ['slug' => $galeria->slug]),
-            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+            $this->configService->getConfig()->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
 
         return view('web.'.$this->configService->getConfig()->template.'.galeria',[
