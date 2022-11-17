@@ -26,7 +26,7 @@
     
     <!-- Slider Section /- -->
             
-        
+        {{--
         <form action="" method="post">
         <div class="check-avail">
                 <div class="container">
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        </form>
+        </form>--}}
     </section>
     <!-- END / SLIDER -->
 
