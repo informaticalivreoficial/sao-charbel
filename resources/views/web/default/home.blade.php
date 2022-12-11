@@ -3,12 +3,8 @@
 @section('content')
 <!-- SLIDER -->
 <section class="section-slider height-v">
-
-    <!-- Slider Section -->
-    
-    <div id="index12" class="owl-carousel  owl-theme">       
-            
-        
+   
+    <div id="index12" class="owl-carousel  owl-theme">
         @if (!empty($slides) && $slides->count() > 0)
             @foreach ($slides as $key => $slide)  
                 <div class="item{{($key == 0 ? ' active' : '')}}">

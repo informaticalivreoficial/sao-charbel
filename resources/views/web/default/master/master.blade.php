@@ -42,6 +42,13 @@
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="{{url('frontend/'.$configuracoes->template.'/assets/css/styles.css')}}"/> 
     
+    <style>
+        #HSystemSearchBoxInline{
+            padding-top: 20px !important;
+            padding-botton: 20px !important;
+        }
+        
+    </style>
     @hasSection('css')
         @yield('css')
     @endif
@@ -226,10 +233,10 @@
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="list-content">                    
                             <ul>                            
-                            <li><a href="/pagina/galerias" title="Galerias">Galerias</a></li>
-                            <li><a href="/pagina/reservar" title="Pré-Reserva">Pré-Reserva</a></li>  
-                            <li><a href="/pagina/atendimento" title="Atendimento">Atendimento</a></li>                          
-                            <li><a href="{{route('web.politica')}}" title="Política de Privacidade">Política de Privacidade</a></li>                          
+                                <li><a href="{{route('web.galerias')}}" title="Galerias">Galerias</a></li>
+                                <li><a href="{{route('web.reservar')}}" title="Pré-Reserva">Pré-Reserva</a></li>  
+                                <li><a href="{{route('web.atendimento')}}" title="Atendimento">Atendimento</a></li>                          
+                                <li><a href="{{route('web.politica')}}" title="Política de Privacidade">Política de Privacidade</a></li>                          
                             </ul>
                         </div>
                     </div>
