@@ -184,10 +184,16 @@ class WebController extends Controller
 
     public function pagina($slug)
     {
-        $clientesCount = User::where('client', 1)->count();
         $post = Post::where('slug', $slug)->where('tipo', 'pagina')->postson()->first();        
         $post->views = $post->views + 1;
         $post->save();
+
+        $postsMais = Post::orderBy('views', 'DESC')
+                ->where('id', '!=', $post->id)
+                ->where('tipo', 'pagina')
+                ->limit(3)
+                ->postson()
+                ->get();
 
         $head = $this->seo->render($post->titulo ?? 'Informática Livre',
             $post->titulo,
@@ -198,7 +204,7 @@ class WebController extends Controller
         return view('web.'.$this->configService->getConfig()->template.'.pagina', [
             'head' => $head,
             'post' => $post,
-            'clientesCount' => $clientesCount
+            'postsMais' => $postsMais
         ]);
     }    
     

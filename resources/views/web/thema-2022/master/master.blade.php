@@ -219,7 +219,7 @@
 								</div>
 								<div class="footer-link">
 									<div class="subricbe p-relative" data-animation="fadeInDown" data-delay=".4s" >
-										<form action="" method="post" class="contact-form j_formsubmitwhats">
+										<form action="" method="post" class="contact-form j_submitnewsletter">
 											@csrf
 											<div id="js-newsletter-result"></div>
 												<div class="form_hide">
@@ -395,7 +395,6 @@
         gtag('config', '{{$configuracoes->tagmanager_id}}');
     </script>
 
-    <script async src='https://s3-sa-east-1.amazonaws.com/hbook-universal-js/js/634efbd423248fa77bd1381f.js'></script>
     
     </body>
 </html>
