@@ -43,7 +43,7 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="single-services mb-30">
                                 <div class="services-thumb">
-                                    <a class="gallery-link popup-image" href="{{$apartamento->cover()}}">
+                                    <a href="{{route('web.acomodacao', ['slug' => $apartamento->slug])}}">
                                     <img height="350" src="{{$apartamento->cover()}}" alt="{{$apartamento->titulo}}">
                                     </a>
                                 </div>
