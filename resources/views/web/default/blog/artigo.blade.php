@@ -51,7 +51,7 @@
                                         <li>
                                             <div class="img">
                                             <a href="{{route(($postmais->tipo == 'artigo' ? 'web.blog.artigo' : 'web.noticia'), ['slug' => $postmais->slug] )}}">
-                                                <img src="{{$postmais->cover()}}" alt="'.$mais['titulo'].'">
+                                                <img src="{{$postmais->cover()}}" alt="{{$postmais->titulo}}">
                                             </a>
                                             </div>
                                             <div class="text">
