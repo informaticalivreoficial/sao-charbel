@@ -179,6 +179,16 @@ class SendEmailController extends Controller
             return response()->json(['error' => $json]);
         }
         
+        if(Carbon::createFromFormat('Y-m-d', $request->checkin)->lt(Carbon::parse(now())->format('Y-m-d'))){
+            $json = "Você selecionou uma <strong>Data do Check In</strong> inválida!";
+            return response()->json(['error' => $json]);
+        }
+
+        if(Carbon::createFromFormat('Y-m-d', $request->checkout)->lt(Carbon::parse(now())->format('Y-m-d'))){
+            $json = "Você selecionou uma <strong>Data do Check Out</strong> inválida!";
+            return response()->json(['error' => $json]);
+        }
+                
         $data = [
             'sitename' => $this->configService->getConfig()->nomedosite,
             'siteemail' => env('MAIL_FROM_ADDRESS'),
@@ -251,19 +261,22 @@ class SendEmailController extends Controller
             'notasadicionais' => 'Cliente cadastrado pelo site'
         ];        
         
-        $userCreate = User::create($user);
-        $userCreate->save();
+        $getUser = User::where('email', $request->email)->first();
+        if(!$getUser){
+            $userCreate = User::create($user);
+            $userCreate->save();
+        }        
 
         $reserva = [
-            'cliente' => $userCreate->id,
+            'cliente' => (!$getUser ? $userCreate->id : $getUser->id),
             'apartamento' => $apartamento->id,
             'empresa' => ($request->tipo_reserva == 1 && !empty($getEmpresa) ? $empresaCreate->id : null),
             'status' => 1,
             'adultos' => $request->num_adultos,
             'criancas_0_5' => $request->num_cri_0_5,
             'codigo' => $data['codigo'],
-            'checkin' => $request->checkin,
-            'checkout' => $request->checkout,
+            'checkin' => Carbon::parse($request->checkin)->format('d/m/Y'),
+            'checkout' => Carbon::parse($request->checkout)->format('d/m/Y'),
             'notasadicionais' => $data['ocupacao']
         ];
         

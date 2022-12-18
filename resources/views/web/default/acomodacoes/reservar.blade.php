@@ -264,17 +264,17 @@
 <!-- END/BODY-ROOM-5-->
 
 <div class="modal fade custom-width" id="modal-3" aria-hidden="true" style="overflow: hidden;display: none;width:96%;">
-<div class="modal-dialog" style="width: 100%;">
-    <div class="modal-content" style="width: 100%;">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h4 class="modal-title">{{$politicareserva->titulo}}</h4>
-            </div> 
-            <div class="modal-body">
-                {!! $politicareserva->content !!}
-            </div>		
+    <div class="modal-dialog" style="width: 100%;">
+        <div class="modal-content" style="width: 100%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">{{$politicareserva->titulo}}</h4>
+                </div> 
+                <div class="modal-body">
+                    {!! $politicareserva->content !!}
+                </div>		
+        </div>
     </div>
-</div>
 </div>
 
 @endsection

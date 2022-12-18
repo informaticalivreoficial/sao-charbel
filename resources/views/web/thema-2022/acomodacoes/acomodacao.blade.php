@@ -57,6 +57,7 @@
                                                 <div class="contact-field p-relative c-subject mb-20">                                   
                                                     <label><i class="fal fa-users"></i> Adultos</label>
                                                     <select name="adultos" id="adu">
+                                                        <option value="0">0</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>

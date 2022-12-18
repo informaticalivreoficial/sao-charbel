@@ -136,7 +136,7 @@
 	</main>
 
 	<footer class="footer-bg footer-p">
-		<div class="footer-top  pt-90 pb-40" style="background-color: #644222; background-image: url(img/bg/footer-bg.png);">
+		<div class="footer-top  pt-90 pb-40" style="background-color: #644222; background-image: url({{url('frontend/'.$configuracoes->template.'/assets/images/footer-bg.png')}});">
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-xl-4 col-lg-4 col-sm-6">
