@@ -110,8 +110,7 @@
 												@endif
 											</li>
 											@endforeach
-										@endif
-										<li><a href="{{route('web.atendimento')}}" title="Atendimento">Atendimento</a></li>                                              
+										@endif                                              
 									</ul>
 								</nav>
 							</div>
