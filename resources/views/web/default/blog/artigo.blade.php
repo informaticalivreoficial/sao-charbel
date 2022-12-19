@@ -28,7 +28,7 @@
                             </div>
                             <div class="entry-content">
                                 {!!$post->content!!}
-                            </div>
+                            </div>                            
                         </article>
                         <!-- END / POST SINGLE -->
                         <div class="share-tag">
@@ -40,6 +40,9 @@
                     </div>
                 </div>
             </div>
+
+            
+
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="sidebar">

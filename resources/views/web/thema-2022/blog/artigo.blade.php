@@ -35,27 +35,45 @@
                             <div class="meta-info">
                                 <ul>
                                     <li><i class="fal fa-eye"></i> {{$post->views}} Visualizações  </li>
+                                    <li><i class="fal fa-calendar-alt"></i> {{ Carbon\Carbon::parse($post->created_at)->format('d/m/Y') }}</li>
                                 </ul>
                             </div>
-                            {!!$post->content!!}                            
+                            {!!$post->content!!}   
+                            
+                            @if($post->images()->get()->count())                                                
+                                @foreach($post->images()->get() as $image)  
+                                    <figure class="d-inline-flex">
+                                        <a class="popup-image" href="{{ $image->url_image }}">
+                                            <img height="161" src="{{ $image->url_cropped }}"  alt="{{ $post->titulo }}"/>
+                                        </a>
+                                    </figure>                                             
+                                @endforeach                                                             
+                            @endif
                         </div>
+                        
                         <div class="posts_navigation pt-35 pb-35">
                             <div class="row align-items-center">
-                                <div class="col-xl-4 col-md-5">
-                                    <div class="prev-link">
-                                        <span>Prev Post</span>
-                                        <h4><a href="#">Tips Minimalist</a></h4>
+                                @if(!empty($postprev) && $postprev->count() > 0)
+                                    <div class="col-xl-4 col-md-5">
+                                        <div class="prev-link">
+                                            <span>Anterior</span>
+                                            <h4><a href="{{route(($postprev->tipo == 'artigo' ? 'web.blog.artigo' : 'web.noticia'), ['slug' => $postprev->slug] )}}">{{$postprev->titulo}}</a></h4>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 <div class="col-xl-4 col-md-2 text-left text-md-center">
-                                    <a href="blog.html" class="blog-filter"><img src="img/icon/c_d01.png" alt=""></a>
+                                    <a href="{{route('web.blog.artigos')}}" class="blog-filter">
+                                        <img src="{{url('frontend/'.$configuracoes->template.'/assets/images/c_d01.png')}}" alt="Artigos">
+                                    </a>
                                 </div>
-                                <div class="col-xl-4 col-md-5">
-                                    <div class="next-link text-left text-md-right">
-                                        <span>next Post</span>
-                                        <h4><a href="#">Less Is More</a></h4>
+                                @if(!empty($postnext) && $postnext->count() > 0)
+                                    <div class="col-xl-4 col-md-5">
+                                        <div class="next-link text-left text-md-right">
+                                            <span>Próximo</span>
+                                            <h4><a href="{{route(($postnext->tipo == 'artigo' ? 'web.blog.artigo' : 'web.noticia'), ['slug' => $postnext->slug] )}}">{{$postnext->titulo}}</a></h4>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                         @if (!empty($postsMais) && $postsMais->count() > 0)
@@ -85,4 +103,16 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('css')
+    <style>
+        .details__content figure {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .details__content figure img {
+            margin-right: 10px;
+        }
+    </style>
 @endsection

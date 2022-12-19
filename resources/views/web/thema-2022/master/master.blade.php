@@ -205,6 +205,7 @@
 								<ul>
 									<li><a href="{{route('web.acomodacoes')}}" title="Acomodações">Acomodações</a></li>
 									<li><a href="{{route('web.galerias')}}" title="Galerias">Galerias</a></li>
+									<li><a href="{{route('web.blog.artigos')}}" title="Blog">Blog</a></li>
 									<li><a href="{{route('web.reservar')}}" title="Pré-Reserva">Pré-Reserva</a></li>  
 									<li><a href="{{route('web.atendimento')}}" title="Atendimento">Atendimento</a></li>                          
 									<li><a href="{{route('web.politica')}}" title="Política de Privacidade">Política de Privacidade</a></li>

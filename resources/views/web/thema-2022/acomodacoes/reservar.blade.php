@@ -83,19 +83,19 @@
                             
                         <div class="row form_hide">
                             <h3 class="mt-3 mb-3">Dados Pessoais</h3>
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <div class="contact-field mb-20">
                                     <label>Nome <span>*</span></label>
                                     <input type="text" name="nome" class=""/>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="contact-field mb-20">
                                     <label>CPF <span>*</span></label>
                                     <input type="text" name="cpf" class="cpfmask"/>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="contact-field mb-20">
                                     <label>RG <span>*</span></label>
                                     <input type="text" name="rg" class="rgmask"/>
@@ -104,13 +104,13 @@
                         </div>
 
                         <div class="row form_hide">
-                            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="contact-field mb-20">
                                     <label>Data de Nasc.<span>*</span></label>
                                     <input type="text" name="nasc" id="nasc" class="nascmask"/>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="contact-field mb-20">
                                     <label>Estado</label>
                                     <select name="uf" id="state-dd">
@@ -123,7 +123,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-9 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-9 col-sm-6 col-md-4 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label>Cidade</label>
                                     <select id="city-dd" class="selectReservas" name="cidade">
@@ -131,7 +131,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+                            <div class="col-xs-3 col-sm-6 col-md-2 col-lg-2">
                                 <div class="contact-field mb-20">
                                     <label>CEP </label>
                                     <input type="text" name="cep" id="cep" class="cepmask"/>
@@ -140,19 +140,19 @@
                         </div>
 
                         <div class="row form_hide">                        
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <div class="contact-field mb-20">
                                     <label>Rua </label>
                                     <input type="text" name="rua"/>
                                 </div>
                             </div>
-                            <div class="col-xs-9 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-9 col-sm-9 col-md-4 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label>Bairro </label>
                                     <input type="text" name="bairro"/>
                                 </div>
                             </div>
-                            <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
                                 <div class="contact-field mb-20">
                                     <label>Número</label>
                                     <input type="text" name="num"/>
@@ -177,19 +177,19 @@
                         
                         <div class="row form_hide">
                             <h3 class="mt-3 mb-3">Informações de Contato</h3>
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label>E-mail <span>*</span></label>
                                     <input type="text" name="email"/>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label>Telefone Móvel<span>*</span></label>
                                     <input type="text" name="telefone_cliente" class="celularmask"/>
                                 </div>
                             </div>                        
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label>WhatsApp </label>
                                     <input type="text" name="whatsapp" class="celularmask"/>
@@ -239,20 +239,20 @@
                         </div>
 
                         <div class="row form_hide">
-                            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label>Check In <span>*</span></label>
                                     <input type="date" id="chackin" name="checkin" value="{{(!empty($dadosForm['checkini']) ? $dadosForm['checkini'] : '')}}" />
                                 </div>
                             </div>
                             
-                            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label>Check Out <span>*</span></label>
                                     <input type="date" id="chackout" name="checkout" value="{{(!empty($dadosForm['checkouti']) ? $dadosForm['checkouti'] : '')}}" />
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                                 <div class="contact-field mb-20">
                                     <label style="margin-bottom:3px;"><a href="javascript:;" onclick="jQuery('#modal-3').modal('show');">Política de Reservas e Hotel</a></label>
                                     <button type="submit" id="js-contact-btn" class="btn ss-btn" data-animation="fadeInRight" data-delay=".8s">Enviar Agora</button>                                    

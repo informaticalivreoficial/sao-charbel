@@ -108,6 +108,20 @@ class WebController extends Controller
         ]);
     }
 
+    public function artigos()
+    {
+        $posts = Post::orderBy('created_at', 'DESC')->where('tipo', '=', 'artigo')->postson()->paginate(10);
+        $head = $this->seo->render('Blog - ' . $this->configService->getConfig()->nomedosite ?? 'Informática Livre',
+            'Blog - ' . $this->configService->getConfig()->nomedosite,
+            route('web.blog.artigos'),
+            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+        );
+        return view('web.'.$this->configService->getConfig()->template.'.blog.artigos', [
+            'head' => $head,
+            'posts' => $posts
+        ]);
+    }
+
     public function artigo(Request $request)
     {
         $post = Post::where('slug', $request->slug)->postson()->first();
@@ -132,6 +146,9 @@ class WebController extends Controller
         $post->views = $post->views + 1;
         $post->save();
 
+        $postnext = Post::where('id', '>', $post->id)->where('tipo', 'artigo')->postson()->first();
+        $postprev = Post::where('id', '<', $post->id)->where('tipo', 'artigo')->postson()->first();
+
         $head = $this->seo->render($post->titulo ?? 'Informática Livre',
             $post->titulo,
             route('web.blog.artigo', ['slug' => $post->slug]),
@@ -143,7 +160,9 @@ class WebController extends Controller
             'post' => $post,
             'postsMais' => $postsMais,
             'postsTags' => $postsTags,
-            'categorias' => $categorias
+            'categorias' => $categorias,
+            'postnext' => $postnext,
+            'postprev' => $postprev
         ]);
     }    
 
