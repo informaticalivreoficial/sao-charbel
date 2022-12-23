@@ -92,7 +92,7 @@
 								</a>
 							</div>
 						</div>
-						<div class="col-xl-8 col-lg-8">
+						<div class="col-xl-10 col-lg-10">
 						
 							<div class="main-menu text-center">
 								<nav id="mobile-menu">
@@ -115,9 +115,9 @@
 								</nav>
 							</div>
 						</div>   
-						<div class="col-xl-2 col-lg-2 d-none d-lg-block">
+						{{--<div class="col-xl-2 col-lg-2 d-none d-lg-block">
 							<a href="{{route('web.reservar')}}" class="top-btn mt-10 mb-10">Pré-Reserva </a>
-						</div>
+						</div>--}}
 						
 						<div class="col-12">
 							<div class="mobile-menu"></div>
