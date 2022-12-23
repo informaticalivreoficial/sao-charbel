@@ -197,7 +197,7 @@
                 $.ajax({
                     type: 'GET',
                     dataType: 'JSON',
-                    url: '{{ route('posts.postSetStatus') }}',
+                    url: "{{ route('posts.postSetStatus') }}",
                     data: {
                         'status': status,
                         'id': post_id
