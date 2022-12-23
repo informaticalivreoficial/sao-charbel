@@ -110,7 +110,7 @@
                                 </li>
                                 @endforeach
                             @endif
-                            <li><a href="{{route('web.atendimento')}}" title="Atendimento">Atendimento</a></li>
+                            {{--<li><a href="{{route('web.atendimento')}}" title="Atendimento">Atendimento</a></li>--}}
                         </ul>
                     </div>
                 </div>
