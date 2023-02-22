@@ -90,7 +90,7 @@
                         
                             <div class="col-lg-12 form_hide">
                                 <div class="contact-field p-relative c-message mb-30">                                  
-                                    <textarea name="message" id="mensagem" cols="30" rows="10" placeholder="Mensagem"></textarea>
+                                    <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Mensagem"></textarea>
                                 </div>
                                 <div class="slider-btn">                                          
                                     <button class="btn ss-btn btncheckout" data-animation="fadeInRight" data-delay=".8s"><span>Enviar Agora</span></button>				
