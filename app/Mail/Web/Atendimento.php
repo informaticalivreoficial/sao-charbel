@@ -33,7 +33,8 @@ class Atendimento extends Mailable
     {
         return $this->replyTo($this->data['reply_email'], $this->data['reply_name'])
             ->to($this->data['siteemail'], $this->data['sitename'])
-            ->cc(['suporte@informaticalivre.com.br','reservas@hotelsaocharbel.com.br'])
+            //->cc(['suporte@informaticalivre.com.br','reservas@hotelsaocharbel.com.br'])
+            ->cc('reservas@hotelsaocharbel.com.br')
             ->from($this->data['siteemail'], $this->data['sitename'])
             ->subject('#Atendimento: ' . $this->data['reply_name'])
             ->markdown('emails.atendimento', [
