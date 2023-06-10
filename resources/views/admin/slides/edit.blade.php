@@ -88,7 +88,7 @@ $config = [
                                 <div class="form-group">
                                     <label class="labelforms text-muted"><b>Expira</b></label>
                                     <div class="input-group date" id="expira">
-                                        <input type="text" class="form-control datepicker-here" data-language='pt-BR' name="expira" value="{{ old('expira') ?? $slide->expira }}"/>
+                                        <input type="text" class="form-control datepicker-here" data-language='pt-BR' name="expira" value="{{ old('expira') ?? Carbon\Carbon::parse($slide->expira)->format('d/m/Y') }}"/>
                                         <div class="input-group-append" data-target="#expira" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
