@@ -126,5 +126,5 @@
 @endsection
 
 @section('js')
-    <script async src='https://s3-sa-east-1.amazonaws.com/hbook-universal-js/js/634efbd423248fa77bd1381f.js'></script>
+    
 @endsection
