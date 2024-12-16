@@ -7,12 +7,12 @@
                 <div class="col-xl-12 col-lg-12">
                     <div class="breadcrumb-wrap text-center">
                         <div class="breadcrumb-title">
-                            <h2>{{(!empty($posts) && $posts[0]->tipo == 'noticia' ? 'Notícias' : 'Blog')}}</h2>    
+                            <h2>Blog</h2>    
                             <div class="breadcrumb-wrap">                  
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{route('web.home')}}">Início</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{(!empty($posts) && $posts[0]->tipo == 'noticia' ? 'Notícias' : 'Blog')}}</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Blog</li>
                                     </ol>
                                 </nav>
                             </div>

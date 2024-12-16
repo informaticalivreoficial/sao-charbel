@@ -134,9 +134,7 @@ class WebController extends Controller
                         ->postson()
                         ->paginate(20);
 
-        if(!empty($posts)){
-            return redirect()->route('blog.artigos');
-        }
+       
 
         $head = $this->seo->render('Blog - ' . $this->configService->getConfig()->nomedosite ?? 'Informática Livre',
             'Blog - ' . $this->configService->getConfig()->nomedosite,
