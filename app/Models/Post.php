@@ -17,6 +17,7 @@ class Post extends Model
 
     protected $fillable = [
         'autor',
+        'assinante',
         'tipo',
         'titulo',
         'content',
@@ -122,6 +123,11 @@ class Post extends Model
     public function setStatusAttribute($value)
     {
         $this->attributes['status'] = ($value == '1' ? 1 : 0);
+    }
+
+    public function setAssinanteAttribute($value)
+    {
+        $this->attributes['assinante'] = ($value == '1' ? 1 : 0);
     }
 
     public function setMenuAttribute($value)

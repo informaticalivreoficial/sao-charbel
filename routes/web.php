@@ -46,6 +46,7 @@ Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
     Route::get('/blog/artigo/{slug}', [WebController::class, 'artigo'])->name('blog.artigo');
     Route::get('/blog/categoria/{slug}', [WebController::class, 'categoria'])->name('blog.categoria');
     Route::get('/blog', [WebController::class, 'artigos'])->name('blog.artigos');
+    Route::get('/blog-do-cliente', [WebController::class, 'artigosClient'])->name('blog.artigosClient');
     Route::match(['post', 'get'], '/blog/pesquisar', [WebController::class, 'searchBlog'])->name('blog.searchBlog');
 
     //*************************************** Acomodações *******************************************/

@@ -110,7 +110,11 @@ class WebController extends Controller
 
     public function artigos()
     {
-        $posts = Post::orderBy('created_at', 'DESC')->where('tipo', '=', 'artigo')->postson()->paginate(10);
+        $posts = Post::orderBy('created_at', 'DESC')
+                        ->where('tipo', '=', 'artigo')
+                        ->where('assinante', '=', 0)
+                        ->postson()
+                        ->paginate(20);
         $head = $this->seo->render('Blog - ' . $this->configService->getConfig()->nomedosite ?? 'Informática Livre',
             'Blog - ' . $this->configService->getConfig()->nomedosite,
             route('web.blog.artigos'),
@@ -122,9 +126,31 @@ class WebController extends Controller
         ]);
     }
 
+    public function artigosClient()
+    {
+        $posts = Post::orderBy('created_at', 'DESC')
+                        ->where('tipo', '=', 'artigo')
+                        ->where('assinante', '=', 1)
+                        ->postson()
+                        ->paginate(20);
+        $head = $this->seo->render('Blog - ' . $this->configService->getConfig()->nomedosite ?? 'Informática Livre',
+            'Blog - ' . $this->configService->getConfig()->nomedosite,
+            route('web.blog.artigos'),
+            $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
+        );
+        return view('web.'.$this->configService->getConfig()->template.'.blog.blog-assinante', [
+            'head' => $head,
+            'posts' => $posts
+        ]);
+    }
+
     public function artigo(Request $request)
     {
         $post = Post::where('slug', $request->slug)->postson()->first();
+
+        if($post->assinante == 1 && $request->hash != env('HASH_CLIENTE')){
+            abort(404);
+        }
         
         $categorias = CatPost::orderBy('titulo', 'ASC')
             ->where('tipo', 'artigo')
@@ -132,11 +158,13 @@ class WebController extends Controller
         $postsMais = Post::orderBy('views', 'DESC')
             ->where('id', '!=', $post->id)
             ->where('tipo', 'artigo')
+            ->where('assinante', '=', 0)
             ->limit(4)
             ->postson()
             ->get();
         $postsTags = Post::orderBy('views', 'DESC')
             ->where('tipo', 'artigo')
+            ->where('assinante', '=', 0)
             ->where('tags', '!=', '')
             ->where('id', '!=', $post->id)
             ->postson()
@@ -173,18 +201,18 @@ class WebController extends Controller
         $paginas = Post::where(function($query) use ($request){
             if($request->search){
                 $query->orWhere('titulo', 'LIKE', "%{$request->search}%")
-                    ->where('tipo', 'pagina')->postson();
+                    ->where('tipo', 'pagina')->where('assinante', '=', 0)->postson();
                 $query->orWhere('content', 'LIKE', "%{$request->search}%")
-                    ->where('tipo', 'pagina')->postson();
+                    ->where('tipo', 'pagina')->where('assinante', '=', 0)->postson();
             }
         })->postson()->limit(10)->get();
 
         $artigos = Post::where(function($query) use ($request){
             if($request->search){
                 $query->orWhere('titulo', 'LIKE', "%{$request->search}%")
-                    ->where('tipo', 'artigo')->postson();
+                    ->where('tipo', 'artigo')->where('assinante', '=', 0)->postson();
                 $query->orWhere('content', 'LIKE', "%{$request->search}%")
-                    ->where('tipo', 'artigo')->postson();
+                    ->where('tipo', 'artigo')->where('assinante', '=', 0)->postson();
             }
         })->postson()->limit(10)->get();
         
@@ -210,6 +238,7 @@ class WebController extends Controller
         $postsMais = Post::orderBy('views', 'DESC')
                 ->where('id', '!=', $post->id)
                 ->where('tipo', 'pagina')
+                ->where('assinante', '=', 0)
                 ->limit(3)
                 ->postson()
                 ->get();

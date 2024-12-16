@@ -81,6 +81,17 @@ $config = [
                             <div class="tab-pane fade show active" id="custom-tabs-conteudo" role="tabpanel" aria-labelledby="custom-tabs-conteudo-tab">
                                                        
                                 <div class="row">
+                                    <div class="col-12 col-md-12 col-lg-12"> 
+                                        <div class="form-group">
+                                            <label class="labelforms"><b>Este conteúdo é para Cliente?</b></label>
+                                            <div class="form-check">
+                                                <input id="exibir_assinante" class="form-check-input" type="radio" value="1" name="assinante" {{(old('assinante') == '1' ? 'checked' : ($post->assinante == '1' ? 'checked' : ''))}}>
+                                                <label for="exibir_assinante" class="form-check-label mr-5">Sim</label>
+                                                <input id="exibir_assinantenao" class="form-check-input" type="radio" value="0" name="assinante" {{(old('assinante') == '0' ? 'checked' : ($post->assinante == '0' ? 'checked' : ''))}}>
+                                                <label for="exibir_assinantenao" class="form-check-label">Não</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label class="labelforms"><b>Título:</b></label>

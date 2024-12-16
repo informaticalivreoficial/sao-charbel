@@ -294,11 +294,6 @@ return [
             ]
         ],
         [
-            'text' => 'Empresas',
-            'url'  => 'admin/empresas',
-            'icon' => 'fas fa-industry',
-        ],
-        [
             'text' => 'Posts',            
             'icon' => 'fas fa-fw fa-pen',
             'submenu' => [
