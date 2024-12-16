@@ -127,17 +127,23 @@ class WebController extends Controller
     }
 
     public function artigosClient()
-    {
+    { 
         $posts = Post::orderBy('created_at', 'DESC')
                         ->where('tipo', '=', 'artigo')
-                        ->where('assinante', '=', 1)
+                        ->where('assinante', 1)
                         ->postson()
                         ->paginate(20);
+
+        if(!empty($posts)){
+            return redirect()->route('web.home');
+        }
+
         $head = $this->seo->render('Blog - ' . $this->configService->getConfig()->nomedosite ?? 'Informática Livre',
             'Blog - ' . $this->configService->getConfig()->nomedosite,
-            route('web.blog.artigos'),
+            route('web.blog.artigosClient'),
             $this->configService->getMetaImg() ?? 'https://informaticalivre.com/media/metaimg.jpg'
         );
+
         return view('web.'.$this->configService->getConfig()->template.'.blog.blog-assinante', [
             'head' => $head,
             'posts' => $posts
