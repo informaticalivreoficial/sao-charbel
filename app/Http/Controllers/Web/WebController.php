@@ -135,7 +135,7 @@ class WebController extends Controller
                         ->paginate(20);
 
         if(!empty($posts)){
-            return redirect()->route('web.home');
+            return redirect()->route('web.blog');
         }
 
         $head = $this->seo->render('Blog - ' . $this->configService->getConfig()->nomedosite ?? 'Informática Livre',
