@@ -55,7 +55,9 @@ class WebController extends Controller
                     ->inRandomOrder()
                     ->limit(6)
                     ->get();
-        $artigos = Post::orderBy('created_at', 'DESC')->where('tipo', 'artigo')
+        $artigos = Post::orderBy('created_at', 'DESC')
+                    ->where('tipo', 'artigo')
+                    ->where('assinante', '=', 0)
                     ->postson()
                     ->limit(6)
                     ->get();
